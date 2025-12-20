@@ -1,5 +1,5 @@
 PLACING BLOCKS:
-- Make a grid system, toggling visible overlay when E is pressed
+- [X] Make a grid system, toggling visible overlay when E is pressed
 - In grid mode, highlight block that mouse is on, restricted to a "placing radius"
 - Highlighting changes to a 1x2 area, rotated vertically when pressing R
 - Place a 1x2 block permanently using left click while in grid mode
