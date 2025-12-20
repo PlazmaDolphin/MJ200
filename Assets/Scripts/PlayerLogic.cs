@@ -1,13 +1,14 @@
 using TMPro;
 using UnityEngine;
 
-public class playerMove : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
     public Camera cam;
     public Collider2D playerCollider;
     public TextMeshProUGUI scrapText; // TODO: Replace with proper UI element
     private float speed = 5f;
     private int scrapCollected = 0;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -33,7 +34,7 @@ public class playerMove : MonoBehaviour
         if (other.CompareTag("scrap"))
         {
             scrapCollected++;
-            other.gameObject.GetComponent<scrapLogic>().die();
+            other.gameObject.GetComponent<ScrapLogic>().Die();
         }
     }
 }

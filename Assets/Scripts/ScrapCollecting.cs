@@ -1,7 +1,9 @@
 using UnityEngine;
 
-public class scrapLogic : MonoBehaviour
+public class ScrapCollecting : MonoBehaviour
 {
+    //TODO: Implement scrap collecting logic here for the player
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -13,9 +15,6 @@ public class scrapLogic : MonoBehaviour
     {
         
     }
-    public void die()
-    {
-        spawnScrap.RemoveScrap(this.gameObject);
-        Destroy(this.gameObject);
-    }
+
+
 }

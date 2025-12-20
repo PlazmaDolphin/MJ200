@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class spawnScrap : MonoBehaviour
+public class SpawnScrap : MonoBehaviour
 {
     public static List<GameObject> scrapList = new List<GameObject>();
     //each scrap has a 2D collider
@@ -15,6 +15,10 @@ public class spawnScrap : MonoBehaviour
     public GameObject scrapPrefab;
     public AnimationCurve spawnBiasX, spawnBiasY;
     public TextMeshProUGUI globalScrapCountText;
+
+    //(CA) Note: The spawning is really unoptimized. I can improve it later if you want. The brute force spawning and checking all other objects for distances scales really poorly.
+    //Fine for now since the scrap limit is low.
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
