@@ -8,6 +8,8 @@ public class worldGrid : MonoBehaviour
     public GameObject gridOverlay, blockGuide;
     public Transform player;
     public LayerMask gridPlaneMask;
+    private enum Direction{Up, Left, Down, Right}
+    private Direction currentDirection = Direction.Up;
     public static Vector2Int WorldToGrid(Vector3 world)
     {
         return new Vector2Int(
@@ -54,13 +56,28 @@ public class worldGrid : MonoBehaviour
             gridMode = !gridMode;
             blockGuide.SetActive(gridMode);
         }
+        // rotate blockGuide with R key
+        if (gridMode && Input.GetKeyDown(KeyCode.R))
+        {
+            // if shift held, rotate counterclockwise
+            if (Input.GetKey(KeyCode.LeftShift))
+                currentDirection = (Direction)(((int)currentDirection - 1 + 4) % 4);
+            else
+                currentDirection = (Direction)(((int)currentDirection + 1) % 4);
+        }
         Vector2Int mouseGrid = GetMouseGrid(gridZ);
         Vector2Int clampedGrid = ClampGridPosToRadius(mouseGrid);
         blockGuide.transform.position = GridToWorld(clampedGrid);
-        //offset blockGuide x by cellSize/2 to center it on grid cell
+        blockGuide.transform.rotation = Quaternion.Euler(
+            0f,
+            0f,
+            (int)currentDirection * 90f
+        );
+        //offset blockGuide by cellSize/2 to center it on grid cell
+        //TODO: rewrite this to work with differently sized blocks
         blockGuide.transform.position = new Vector3(
-            blockGuide.transform.position.x + GridOverlay.cellSize * 0.5f,
-            blockGuide.transform.position.y,
+            blockGuide.transform.position.x + (((int) currentDirection % 2 == 0) ? GridOverlay.cellSize * 0.5f : 0),
+            blockGuide.transform.position.y + (((int) currentDirection % 2 == 1) ? GridOverlay.cellSize * 0.5f : 0),
             blockGuide.transform.position.z
         );
     }
