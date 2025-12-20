@@ -15,7 +15,7 @@ public class ScrapPile : MonoBehaviour
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
 
         if (initialScrapAmount <= 0)
@@ -23,7 +23,7 @@ public class ScrapPile : MonoBehaviour
             initialScrapAmount = Random.Range(1, 10);
         }
         currentScrapAmount = initialScrapAmount;
-        
+
         // Set sprite based on initial scrap amount, Set in Editor from 0 (empty) to 2 (full)
         UpdateSize();
 
