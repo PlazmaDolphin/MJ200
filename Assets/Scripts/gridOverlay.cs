@@ -6,7 +6,7 @@ public class GridOverlay : MonoBehaviour
 {
     public Transform playerPos; // for centering on player
     private int gridSize = 8;
-    private float cellSize = 1.25f;
+    public const float cellSize = 1.25f;
     void Awake()
     {
         Mesh mesh = new Mesh();

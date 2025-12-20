@@ -2,7 +2,44 @@ using UnityEngine;
 
 public class worldGrid : MonoBehaviour
 {
-    public GameObject gridOverlay;
+    private bool gridMode = false;
+    private const float placeRadius = 4f;
+    private const float gridZ = 0f;
+    public GameObject gridOverlay, blockGuide;
+    public Transform player;
+    public LayerMask gridPlaneMask;
+    public static Vector2Int WorldToGrid(Vector3 world)
+    {
+        return new Vector2Int(
+            Mathf.FloorToInt(world.x / GridOverlay.cellSize),
+            Mathf.FloorToInt(world.y / GridOverlay.cellSize)
+        );
+    }
+
+    public static Vector3 GridToWorld(Vector2Int grid)
+    {
+        return new Vector3(
+            grid.x * GridOverlay.cellSize + GridOverlay.cellSize * 0.5f,
+            grid.y * GridOverlay.cellSize + GridOverlay.cellSize * 0.5f,
+            gridZ
+        );
+    }
+    Vector2Int ClampGridPosToRadius(Vector2Int desiredGrid)
+    {
+        Vector3 desiredWorld = GridToWorld(desiredGrid);
+        Vector3 playerPos = player.position;
+
+        Vector3 offset = desiredWorld - playerPos;
+        float dist = offset.magnitude;
+
+        if (dist <= placeRadius)
+            return desiredGrid;
+
+        Vector3 clampedWorld =
+            playerPos + offset.normalized * placeRadius;
+        return WorldToGrid(clampedWorld);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -14,6 +51,41 @@ public class worldGrid : MonoBehaviour
         //toggle grid on/off with E key
         if (Input.GetKeyDown(KeyCode.E)) {
             gridOverlay.SetActive(!gridOverlay.activeSelf);
+            gridMode = !gridMode;
+            blockGuide.SetActive(gridMode);
         }
+        Vector2Int mouseGrid = GetMouseGrid(gridZ);
+        Vector2Int clampedGrid = ClampGridPosToRadius(mouseGrid);
+        blockGuide.transform.position = GridToWorld(clampedGrid);
+        //offset blockGuide x by cellSize/2 to center it on grid cell
+        blockGuide.transform.position = new Vector3(
+            blockGuide.transform.position.x + GridOverlay.cellSize * 0.5f,
+            blockGuide.transform.position.y,
+            blockGuide.transform.position.z
+        );
+    }
+    Vector3 GetMouseWorldPosition(float gridZ = 0f)
+    {
+        Vector3 mousePos = Input.mousePosition;
+        Camera cam = Camera.main;
+
+        // For orthographic camera
+        if (cam.orthographic)
+        {
+            Vector3 worldPos = cam.ScreenToWorldPoint(mousePos);
+            worldPos.z = gridZ; // snap to grid plane
+            return worldPos;
+        }
+
+        // For perspective camera
+        Ray ray = cam.ScreenPointToRay(mousePos);
+        float t = (gridZ - ray.origin.z) / ray.direction.z;
+        return ray.origin + ray.direction * t;
+    }
+
+    Vector2Int GetMouseGrid(float gridZ = 0f)
+    {
+        Vector3 worldPos = GetMouseWorldPosition(gridZ);
+        return WorldToGrid(worldPos);
     }
 }
