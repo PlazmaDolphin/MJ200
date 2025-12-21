@@ -135,6 +135,7 @@ MonoBehaviour:
   cam: {fileID: 0}
   playerCollider: {fileID: 3828251439131567093}
   scrapText: {fileID: 0}
+  playerSprite: {fileID: 4889067633514597937}
 --- !u!50 &7152446507376511172
 Rigidbody2D:
   serializedVersion: 5
