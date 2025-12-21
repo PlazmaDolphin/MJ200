@@ -5,7 +5,7 @@ PLACING BLOCKS:
 - [X] Place a 1x2 block permanently using left click while in grid mode
 - [X] Restrict placing to areas that do not have other walls, items, piles, enemies, or the player
 - [X] If a restricted area is highlighted with the mouse, highlight it in red
-- Add support for 2x2 block (turret)?
+- [X] Add support for 2x2 block (turret)?
 
 [FOR CHRIZ]: Fix the layering when objects are close
 - Ex. If player comes in from top, wall should show
