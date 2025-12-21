@@ -1,10 +1,10 @@
 PLACING BLOCKS:
 - [X] Make a grid system, toggling visible overlay when E is pressed
-- In grid mode, highlight block that mouse is on, restricted to a "placing radius"
-- Highlighting changes to a 1x2 area, rotated vertically when pressing R
-- Place a 1x2 block permanently using left click while in grid mode
-- Restrict placing to areas that do not have other walls, items, piles, enemies, or the player
-  - If a restricted area is highlighted with the mouse, highlight it in red
+- [X] In grid mode, highlight block that mouse is on, restricted to a "placing radius"
+- [X] Highlighting changes to a 1x2 area, rotated vertically when pressing R
+- [X] Place a 1x2 block permanently using left click while in grid mode
+- [X] Restrict placing to areas that do not have other walls, items, piles, enemies, or the player
+- [X] If a restricted area is highlighted with the mouse, highlight it in red
 - Add support for 2x2 block (turret)?
 
 [FOR CHRIZ]: Fix the layering when objects are close

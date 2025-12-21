@@ -1,15 +1,18 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class worldGrid : MonoBehaviour
 {
-    private bool gridMode = false;
+    private bool gridMode = false, validPlacement = false;
     private const float placeRadius = 4f;
     private const float gridZ = 0f;
     public GameObject gridOverlay, blockGuide;
     public Transform player;
     public LayerMask gridPlaneMask;
+    public GameObject wallPrefab;
     private enum Direction{Up, Left, Down, Right}
     private Direction currentDirection = Direction.Up;
+    private HashSet<Vector2Int> placedBlocks = new HashSet<Vector2Int>();
     public static Vector2Int WorldToGrid(Vector3 world)
     {
         return new Vector2Int(
@@ -80,6 +83,28 @@ public class worldGrid : MonoBehaviour
             blockGuide.transform.position.y + (((int) currentDirection % 2 == 1) ? GridOverlay.cellSize * 0.5f : 0),
             blockGuide.transform.position.z
         );
+        validPlacement = true;
+        // check if placement is valid
+        validPlacement = !placedBlocks.Contains(clampedGrid) &&
+            !placedBlocks.Contains((int)currentDirection % 2 == 0 ? new Vector2Int(clampedGrid.x+1, clampedGrid.y) : 
+                                                                    new Vector2Int(clampedGrid.x, clampedGrid.y+1));
+        // use the collider's world-space bounds to get a Vector2 center and size for Physics2D.OverlapBox
+        var boxBounds = blockGuide.GetComponent<BoxCollider2D>().bounds;
+        Vector2 boxCenter = new Vector2(boxBounds.center.x, boxBounds.center.y);
+        Vector2 boxSize = new Vector2(boxBounds.size.x, boxBounds.size.y);
+        float boxAngle = blockGuide.transform.eulerAngles.z;
+        validPlacement &= Physics2D.OverlapBox(boxCenter, boxSize, boxAngle, gridPlaneMask.value) == null;
+        // color blockGuide based on validity ( #B0B0FF60 for valid, #FFB0B060 for invalid)
+        blockGuide.GetComponent<Renderer>().material.color = validPlacement ? new Color(0.686f, 0.686f, 1f, 0.38f) : new Color(1f, 0.686f, 0.686f, 0.38f);
+        // place wall with LMB
+        if (Input.GetMouseButtonDown(0) && gridMode && validPlacement)
+        {
+            Instantiate(wallPrefab, blockGuide.transform.position, blockGuide.transform.rotation);
+            placedBlocks.Add(clampedGrid);
+            //block is a 1x2 block, so add the adjacent cell to placedBlocks
+            placedBlocks.Add((int)currentDirection % 2 == 0 ? new Vector2Int(clampedGrid.x+1, clampedGrid.y) : 
+                                                              new Vector2Int(clampedGrid.x, clampedGrid.y+1));
+        }
     }
     Vector3 GetMouseWorldPosition(float gridZ = 0f)
     {
