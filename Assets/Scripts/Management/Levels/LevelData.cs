@@ -16,11 +16,11 @@ public class LevelData : ScriptableObject
     public void LoadScene()
     {
         //SceneManager.LoadScene(this.name);
-        SceneLoader.Instance.LoadScene(this);
+        //SceneLoader.Instance.LoadScene(this);
     }
 
     public void ReloadCurrentScene()
     {
-        SceneLoader.Instance.ReloadCurrentScene();
+        //SceneLoader.Instance.ReloadCurrentScene();
     }
 }
