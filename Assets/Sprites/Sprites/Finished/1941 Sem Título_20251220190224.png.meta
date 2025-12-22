@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c55a0a4d7e9a83f428eb5d0169d87d3a
+guid: 0e90501ebc03471498a04d83f3da72d6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2007877349088433432
-    second: "1941 Sem T\xEDtulo_20251220153330_0"
+      213: 1324443746065882618
+    second: "1941 Sem T\xEDtulo_20251220190224_0"
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "1941 Sem T\xEDtulo_20251220153330_0"
+      name: "1941 Sem T\xEDtulo_20251220190224_0"
       rect:
         serializedVersion: 2
-        x: 93
-        y: 21
-        width: 461
-        height: 403
+        x: 12
+        y: 3
+        width: 622
+        height: 523
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 81518f09fc96ddb10800000000000000
-      internalID: 2007877349088433432
+      spriteID: afd9e31e19e516210800000000000000
+      internalID: 1324443746065882618
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "1941 Sem T\xEDtulo_20251220153330_0": 2007877349088433432
+      "1941 Sem T\xEDtulo_20251220190224_0": 1324443746065882618
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 2007877349088433432, guid: c55a0a4d7e9a83f428eb5d0169d87d3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c55a0a4d7e9a83f428eb5d0169d87d3a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 6.4, y: 6.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,8 +100,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1202348342286367412}
-  - component: {fileID: 7548344877839983719}
   - component: {fileID: 1889251898012700184}
+  - component: {fileID: 7548344877839983719}
   m_Layer: 0
   m_Name: ScrapPile
   m_TagString: Untagged
@@ -125,23 +125,6 @@ Transform:
   - {fileID: 5646378064456400555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7548344877839983719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8470815123247580271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11e32b968eddcd649af3aa8f9687c9c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::ScrapPile
-  currentScrapAmount: 0
-  initialScrapAmount: 0
-  smallPile: {fileID: -1859320928724270277, guid: 7cb2b2ec0dde0b54bb5cb282e3f69447, type: 3}
-  mediumPile: {fileID: 9182157284707403512, guid: 525bf2ef425efc34381a8b36aa96cda0, type: 3}
-  largePile: {fileID: 6631300960964415835, guid: 2896cdab836ec914a9bcd43b03966139, type: 3}
 --- !u!61 &1889251898012700184
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -188,3 +171,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &7548344877839983719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8470815123247580271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11e32b968eddcd649af3aa8f9687c9c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ScrapPile
+  currentScrapAmount: 0
+  initialScrapAmount: 0
+  smallPile: {fileID: 21300000, guid: 7122e2694d1f4684892dc65dde88c16e, type: 3}
+  mediumPile: {fileID: 21300000, guid: c55a0a4d7e9a83f428eb5d0169d87d3a, type: 3}
+  largePile: {fileID: 21300000, guid: 0e90501ebc03471498a04d83f3da72d6, type: 3}

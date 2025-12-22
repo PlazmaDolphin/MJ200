@@ -1,10 +1,28 @@
 fileFormatVersion: 2
-guid: c55a0a4d7e9a83f428eb5d0169d87d3a
+guid: 24f8ec9b6f09d014fa212fabfdf2985e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2007877349088433432
-    second: "1941 Sem T\xEDtulo_20251220153330_0"
+      213: -749024654251515319
+    second: spritesheet (3)_0
+  - first:
+      213: -1025294881627752460
+    second: spritesheet (3)_1
+  - first:
+      213: 5676210040115815652
+    second: spritesheet (3)_2
+  - first:
+      213: -3336086821669477768
+    second: spritesheet (3)_3
+  - first:
+      213: 7513226289831329176
+    second: spritesheet (3)_4
+  - first:
+      213: 4529837530519007653
+    second: spritesheet (3)_5
+  - first:
+      213: -589748259030667114
+    second: spritesheet (3)_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +64,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -126,23 +144,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "1941 Sem T\xEDtulo_20251220153330_0"
+      name: Build_0
       rect:
         serializedVersion: 2
-        x: 93
-        y: 21
-        width: 461
-        height: 403
+        x: 0
+        y: 0
+        width: 640
+        height: 640
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 81518f09fc96ddb10800000000000000
-      internalID: 2007877349088433432
+      spriteID: 06f0428f72c132543bc2cf4e1aab62b4
+      internalID: -299394135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Build_1
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8685694870af9ad48b184953b878f7a9
+      internalID: -513417996
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Build_2
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 89424bb1f70046f47b6ddc652e5a14f4
+      internalID: 1664050398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Build_3
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 0
+        width: 640
+        height: 640
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb63dc5c7a72d984fab1a588e5a039b3
+      internalID: -1710701003
       vertices: []
       indices: 
       edges: []
@@ -151,7 +235,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 5c0630ae1fef91549bac70a39131a63f
     internalID: 0
     vertices: []
     indices: 
@@ -159,9 +243,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries: []
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":640.0,"y":640.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      "1941 Sem T\xEDtulo_20251220153330_0": 2007877349088433432
+      Build_0: -299394135
+      Build_1: -513417996
+      Build_2: 1664050398
+      Build_3: -1710701003
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
