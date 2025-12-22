@@ -12,7 +12,9 @@ public class worldGrid : MonoBehaviour
     public LayerMask gridPlaneMask;
     public GameObject wallPrefab;
     public Sprite[] blockSprites; // Array of sprites for different block sizes
-    
+
+    private GameObject wallBlockHolder;
+
     private enum Direction{Up, Left, Down, Right}    
     private Direction currentDirection = Direction.Up;
     private int currentBlockSize = 0;
@@ -25,7 +27,12 @@ public class worldGrid : MonoBehaviour
         new Vector2Int(2, 2), // Size2x2
         new Vector2Int(3, 2)  // Size2x3
     };
-    
+
+    private void Start()
+    {
+        wallBlockHolder = new GameObject("WallBlocks");
+    }
+
     private HashSet<Vector2Int> placedBlocks = new HashSet<Vector2Int>();
     public static Vector2Int WorldToGrid(Vector3 world)
     {
@@ -57,12 +64,6 @@ public class worldGrid : MonoBehaviour
         Vector3 clampedWorld =
             playerPos + offset.normalized * placeRadius;
         return WorldToGrid(clampedWorld);
-    }
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame
@@ -124,7 +125,7 @@ public class worldGrid : MonoBehaviour
         // place wall with LMB
         if (Input.GetMouseButtonDown(0) && gridMode && validPlacement)
         {
-            GameObject newWall = Instantiate(wallPrefab, blockGuide.transform.position, blockGuide.transform.rotation);
+            GameObject newWall = Instantiate(wallPrefab, blockGuide.transform.position, blockGuide.transform.rotation, wallBlockHolder.transform);
             newWall.GetComponent<SpriteRenderer>().sprite = blockSprites[currentBlockSize];            
             // Update collider to match block size
             BoxCollider2D collider = newWall.GetComponent<BoxCollider2D>();

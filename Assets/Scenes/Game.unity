@@ -2106,7 +2106,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   gridOverlay: {fileID: 1988166697}
   blockGuide: {fileID: 175460145}
-  player: {fileID: 0}
+  player: {fileID: 1564919209}
   gridPlaneMask:
     serializedVersion: 2
     m_Bits: 1
@@ -2623,7 +2623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbccc441738b8e4f90bb4ec9f51b855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  playerPos: {fileID: 0}
+  playerPos: {fileID: 1564919209}
 --- !u!4 &1988166701
 Transform:
   m_ObjectHideFlags: 0
@@ -2878,6 +2878,10 @@ PrefabInstance:
       propertyPath: weapon
       value: 
       objectReference: {fileID: 1313414582}
+    - target: {fileID: 9117221614367752253, guid: 18f0d40c065060a4fa4f6d6edfb05769, type: 3}
+      propertyPath: salvaging
+      value: 
+      objectReference: {fileID: 7400000, guid: 8ff6ab5ea95aeea44900c5dac9a6ba64, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

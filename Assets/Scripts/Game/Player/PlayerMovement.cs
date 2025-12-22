@@ -24,7 +24,11 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        if (!canMove) return;
+        if (!canMove)
+        {
+            moveInput = Vector2.zero;
+            return;
+        }
 
         // Get move input
         moveInput.x = Input.GetAxisRaw("Horizontal");
