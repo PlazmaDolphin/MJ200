@@ -16,7 +16,6 @@ public class PlayerMove : MonoBehaviour
     void Start()
     {
         initXScale = transform.localScale.x;
-        Debug.Log(initXScale);
     }
 
     // Update is called once per frame
@@ -38,6 +37,11 @@ public class PlayerMove : MonoBehaviour
             weapon.UseWeapon();
         }
         scrapText.text = "Scrap: " + scrapCollected;
+        // scroll wheel to change weapon if not in grid mode
+        if (Input.GetAxis("Mouse ScrollWheel") != 0 && !worldGrid.gridMode) {
+            weapon.SwitchWeapon(Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1);
+        }
+
     }
 
     public void OnTriggerEnter2D(Collider2D other)
