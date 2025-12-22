@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class worldGrid : MonoBehaviour
 {
-    private bool gridMode = false, validPlacement = false;
+    public static bool gridMode = false;
+    private bool validPlacement = false;
     private const float placeRadius = 4f;
     private const float gridZ = 0f;
     public GameObject gridOverlay, blockGuide;

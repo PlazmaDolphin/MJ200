@@ -9,32 +9,31 @@ PLACING BLOCKS:
 - Possible Solution: Split close and far side into different sprites, when assembling, one gets higher z-value?
 
 PLAYER WEAPONS:
-- Make Dummy police
-  - Stands still
-  - Detects hits
++ Make Dummy police
++   Stands still
++   Detects hits
   [PART 2]
-  - Dies after 3? hits
-  - Knockback after hit?
-  - Respawn after death
-- Make short range melee
-  - [Might be shank, shiv, sword, something short]
-  - Short range, can attack quickly
-  - held in player's hand
-  - activates hitbox when swung
-  - hitbox goes in arc then deactivates
++   Dies after 3? hits
++   Knockback after hit?
+-   Respawn after death
++ Make short range melee
++   Short range, can attack quickly
+-   held in player's hand
++   activates hitbox when swung
++   automatically deactivates and enforces cooldown
 - Make gun
-  - also held in hand
-  - releases bullet object when fired
-    - bullet has set velocity
-    - bullet destroyed upon hitting enemy or if not hitting anything
-    - [OPTIONAL]: Bullet goes through player walls,
-      but only for a short range (like peeking over and shooting)
-  - [Could leave for CHRIZ]: ammo reloading (takes 6? shots per clip, reloads cost scrap)
+-  - also held in hand
+-  - releases bullet object when fired
+-    - bullet has set velocity
+-    - bullet destroyed upon hitting enemy or if not hitting anything
+-    - [OPTIONAL]: Bullet goes through player walls,
+-      but only for a short range (like peeking over and shooting)
+-  - [Could leave for CHRIZ]: ammo reloading (takes 6? shots per clip, reloads cost scrap)
 - Make Grenade
-  - Make it travel an arc trajectory
-  - Show arc guide as dotted line
-  - Grenade ignores walls until hitting ground
-  - On ground hit, start timer and tumble around a bit
-  - Explode and deal AoE damage
-  - [OPTIONAL] Explode on contact with enemy (extra damage)
-            -  must be near end of path to explode on contact
+-  - Make it travel an arc trajectory
+-  - Show arc guide as dotted line
+-  - Grenade ignores walls until hitting ground
+-  - On ground hit, start timer and tumble around a bit
+-  - Explode and deal AoE damage
+-  - [OPTIONAL] Explode on contact with enemy (extra damage)
+-            -  must be near end of path to explode on contact
