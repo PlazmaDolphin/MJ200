@@ -9,31 +9,33 @@ PLACING BLOCKS:
 - Possible Solution: Split close and far side into different sprites, when assembling, one gets higher z-value?
 
 PLAYER WEAPONS:
-+ Make Dummy police
-+   Stands still
-+   Detects hits
-  [PART 2]
-+   Dies after 3? hits
-+   Knockback after hit?
-+   Respawn after death
-+ Make short range melee
-+   Short range, can attack quickly
-+   held in player's hand
-+   activates hitbox when swung
-+   automatically deactivates and enforces cooldown
-+ Make gun
-+  - also held in hand
-+    releases bullet object when fired
-+    - bullet has set velocity
-+    - bullet destroyed upon hitting enemy or if not hitting anything
+[MELEE, GUN, AND GRENADE COMPLETE]
 -    - [OPTIONAL]: Bullet goes through player walls,
 -      but only for a short range (like peeking over and shooting)
 -  - [Could leave for CHRIZ]: ammo reloading (takes 6? shots per clip, reloads cost scrap)
-- Make Grenade
--  - Make it travel an arc trajectory
--  - Show arc guide as dotted line
--  - Grenade ignores walls until hitting ground
--  - On ground hit, start timer and tumble around a bit
--  - Explode and deal AoE damage
--  - [OPTIONAL] Explode on contact with enemy (extra damage)
--            -  must be near end of path to explode on contact
+-  [OPTIONAL] Player weapons can damage walls
+
+POLICE AI:
+[BASIC FUNCTIONS]
+- Use NavMesh to find a path to the player
+-   Navigate around walls
+-   Update the mesh upon each block placement
+- If no path can be found:
+-   [BASIC]: Move in straight line to player, break walls in the way
+-     - Give police attack
+-     - Give walls a health bar
+-     - Walls properly deleted when health = 0
+-   [MEDIUM]: Find minimum number of wall breaks needed to reach player
+-     - Target thinnest part of wall
+-     - Do not reevaluate until target wall is broken
+-     - [OPTIONAL] Prioritize breaking low-health walls
+[ADVANCED FUNCTIONS]:
+- Give Police different AI strategies / classes?
+-   1. Targets player (fast, low damage)
+-   2. Targets walls  (slow, high damage)
+-   3. Targets machines (medium speed and damage)
+-   Priorities will progress upwards
+-     Ex. if no machines, machine AI targets walls
+-         if no machines or walls, machine AI targets player
+-   If player has open path and in proximity, always target player
+- [OPTIONAL]: Catapult class flings Type 1 AIs over the wall

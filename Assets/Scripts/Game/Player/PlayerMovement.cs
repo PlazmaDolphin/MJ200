@@ -9,7 +9,7 @@ public class PlayerMovement : MonoBehaviour
     public Action OnDashed;
 
     [Header("Movement")]
-    [SerializeField] private float moveSpeed = 5f;
+    [SerializeField] private const float moveSpeed = 5f;
     private Vector2 moveInput;
     public Vector2 MoveInput => moveInput;
     private bool canMove = true;
@@ -33,8 +33,9 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
-        
-        Rb.linearVelocity = moveInput.normalized * moveSpeed;
+        //setting rigidbody velocity will break knockback, do it the dumb way
+        transform.position += (Vector3)moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
+        //Rb.linearVelocity = moveInput.normalized * moveSpeed;
     }
 
     public Vector2 GetLastMoveDirection()

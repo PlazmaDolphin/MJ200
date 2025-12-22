@@ -20,17 +20,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // Get WASD input and normalize
-        Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         // flip player based on mouse position
         transform.localScale = new Vector3(initXScale * (Input.mousePosition.x < Screen.width / 2 ? -1 : 1), transform.localScale.y, transform.localScale.z);
-        input.Normalize();
-        // Move the player based on input
-        transform.Translate(input * speed * Time.deltaTime, Space.World);
-        // force player rotation to be 0
-        transform.rotation = Quaternion.Euler(0, 0, 0);
-        // center camera to player position
-        //cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
         // handle weapon usage
         if (Input.GetMouseButtonDown(0) && !worldGrid.gridMode)
         {
