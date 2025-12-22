@@ -50,8 +50,8 @@ MonoBehaviour:
   bulletPrefab: {fileID: 3059875712051893661, guid: b6b46d66359b3fd4388cee588543d2b9, type: 3}
   WeaponAnimator: {fileID: 2878556612043290635}
   weaponSprites:
-  - {fileID: 761100573506273824, guid: a7af3ac4ae503b04495b6dbf27e9c644, type: 3}
-  - {fileID: -6628414004274166170, guid: e44dea2ede87c7e45bb3304a9ddc6834, type: 3}
+  - {fileID: -1958604787678368536, guid: 4049516ec2d800143adc1eed6546bb89, type: 3}
+  - {fileID: -4670347095062736498, guid: e6024c81c598bd844b291096edd31fa9, type: 3}
   - {fileID: -1791783992758969951, guid: c4fed541a8c8ce74eaa262f6f4cd934e, type: 3}
   grenade: {fileID: 4140240703350599985}
 --- !u!50 &1935972499995274309
@@ -673,7 +673,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 761100573506273824, guid: a7af3ac4ae503b04495b6dbf27e9c644, type: 3}
+  m_Sprite: {fileID: -1958604787678368536, guid: 4049516ec2d800143adc1eed6546bb89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -721,7 +721,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1}
+    oldSize: {x: 4.72, y: 5.93}
     newSize: {x: 2, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
