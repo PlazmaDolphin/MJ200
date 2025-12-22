@@ -1,11 +1,20 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
-public class ScrapPile : MonoBehaviour
+public interface IHarvestable
+{
+    void StartHarvesting();
+    void StopHarvesting();
+    void CollectScrap(int amount);
+}
+
+public class ScrapPile : MonoBehaviour, IHarvestable
 {
     [SerializeField]
+    private float harvestTime = 3f;
+    [SerializeField]
     private int currentScrapAmount = 1;
-
-    public int initialScrapAmount = 0;
 
     [SerializeField]
     private Sprite smallPile, mediumPile, largePile;
@@ -13,16 +22,42 @@ public class ScrapPile : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private BoxCollider2D boxCollider;
 
+    private Coroutine collectCoroutine;
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+
+    public void StartHarvesting()
+    {
+        Debug.Log("Collecting scrap...");
+        if (collectCoroutine == null)
+        {
+            collectCoroutine = StartCoroutine(ScrapCollectingCoroutine());
+        }
+    }
+
+    public void StopHarvesting()
+    {
+        if (collectCoroutine != null)
+        {
+            StopCoroutine(collectCoroutine);
+            collectCoroutine = null;
+            Debug.Log("Stopped collecting scrap.");
+        }
+    }
+
     private void Awake()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         boxCollider = GetComponent<BoxCollider2D>();
 
-        if (initialScrapAmount <= 0)
-        {
-            initialScrapAmount = Random.Range(1, 10);
-        }
-        currentScrapAmount = initialScrapAmount;
+        //if (initialScrapAmount <= 0)
+        //{
+        //    initialScrapAmount = Random.Range(1, 10);
+        //}
 
         // Set sprite based on initial scrap amount, Set in Editor from 0 (empty) to 2 (full)
         UpdateSize();
@@ -31,23 +66,24 @@ public class ScrapPile : MonoBehaviour
         boxCollider.size = spriteRenderer.sprite.bounds.size;
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
-    void CollectScrap(int amount)
+    public void CollectScrap(int amount = 1)
     {
         currentScrapAmount -= amount;
+        InventoryManager.Instance.PickupScrap(amount);
         if (currentScrapAmount <= 0)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
         else
         {
             UpdateSize();
         }
+    }
+
+    public void SetInitialScrap(int amount)
+    {
+        currentScrapAmount = amount;
+        UpdateSize();
     }
 
     private void UpdateSize()
@@ -76,4 +112,17 @@ public class ScrapPile : MonoBehaviour
             //(CA) Will pick this up later with a Shader change or outline effect 
         }
     }
+    IEnumerator ScrapCollectingCoroutine()
+    {
+        yield return new WaitForSeconds(harvestTime);
+
+        while (true)
+        {
+            // Collect scrap logic here
+            CollectScrap();
+            Debug.Log("Scrap collected!");
+            yield return new WaitForSeconds(harvestTime); // Collect scrap every 3 seconds
+        }
+    }
+
 }

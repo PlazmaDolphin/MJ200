@@ -14,6 +14,9 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 MoveInput => moveInput;
     private bool canMove = true;
 
+    private float speed = 5f;
+
+
     void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
@@ -30,6 +33,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        
         Rb.linearVelocity = moveInput.normalized * moveSpeed;
     }
 

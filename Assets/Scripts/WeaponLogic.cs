@@ -1,4 +1,5 @@
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.InputSystem;
 //TODO: Add support for being unarmed
 public class WeaponLogic : MonoBehaviour
 {
@@ -24,7 +25,7 @@ public class WeaponLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = Quaternion.Euler(0, 0, GetMouseAngle());
+        transform.localRotation = Quaternion.Euler(0, 0, GetMouseAngle());
     }
     public void SwitchWeapon(int typeOffset)
     {
@@ -59,11 +60,14 @@ public class WeaponLogic : MonoBehaviour
     }
     private float GetMouseAngle()
     {
-        Vector2 mousePos = Input.mousePosition;
-        Vector2 screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
-        // if angle between 90 and -90, flip across y-axis
-        if (mousePos.x < screenCenter.x) return -Mathf.Atan2(screenCenter.y - mousePos.y, mousePos.x - screenCenter.x) * Mathf.Rad2Deg + 180f;
-        else return Mathf.Atan2(mousePos.y - screenCenter.y, mousePos.x - screenCenter.x) * Mathf.Rad2Deg;
+        Vector3 ms = Mouse.current.position.ReadValue();
+        ms.z = -Camera.main.transform.position.z;
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(ms);
+        Vector3 worldDir = mouseWorld - transform.parent.position;
+        Vector3 localDir = transform.parent.InverseTransformVector(worldDir);
+
+        float angle = Mathf.Atan2(localDir.y, localDir.x) * Mathf.Rad2Deg;
+        return angle;
     }
 
     private Vector2 GetNormalizedMouseDirection()

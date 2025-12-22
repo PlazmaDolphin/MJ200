@@ -603,6 +603,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887028175}
   m_Mesh: {fileID: 0}
+--- !u!1 &1028070110
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1028070112}
+  - component: {fileID: 1028070111}
+  m_Layer: 0
+  m_Name: InventoryManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1028070111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028070110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c22b39bf4e4e85646a2dcc9249f8c822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
+  scrapText: {fileID: 0}
+  totalScrapText: {fileID: 0}
+--- !u!4 &1028070112
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028070110}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1174625855
 GameObject:
   m_ObjectHideFlags: 0
@@ -1404,6 +1450,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   globalScrapCountText: {fileID: 1174625857}
+  scrapRoot: {fileID: 0}
 --- !u!1 &1891117745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1735,3 +1782,4 @@ SceneRoots:
   - {fileID: 1926736607}
   - {fileID: 532989885}
   - {fileID: 1220339438}
+  - {fileID: 1028070112}
