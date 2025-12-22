@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 227438882793746657}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.05, y: -0.1, z: 0}
+  m_LocalPosition: {x: 0.25, y: -0.3, z: -0.16}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -46,7 +46,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e980047c57f2e654e92f30c4e524b7ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  knife: {fileID: 7877205967074137450}
+  weapon: {fileID: 7877205967074137450}
+  bulletPrefab: {fileID: 3059875712051893661, guid: b6b46d66359b3fd4388cee588543d2b9, type: 3}
+  WeaponAnimator: {fileID: 2878556612043290635}
+  weaponSprites:
+  - {fileID: 761100573506273824, guid: a7af3ac4ae503b04495b6dbf27e9c644, type: 3}
+  - {fileID: -6628414004274166170, guid: e44dea2ede87c7e45bb3304a9ddc6834, type: 3}
 --- !u!50 &1935972499995274309
 Rigidbody2D:
   serializedVersion: 5
@@ -188,7 +193,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 12.050001, y: 7.17, z: 0}
   m_LocalScale: {x: 1.44, y: 1.44, z: 1.44}
-  m_ConstrainProportionsScale: 1
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5879693424106156272}
   - {fileID: 4403145823018915343}
@@ -401,6 +406,7 @@ GameObject:
   - component: {fileID: 6363517519436428618}
   - component: {fileID: 1577561621613771260}
   - component: {fileID: 5782760524101111243}
+  - component: {fileID: 2878556612043290635}
   m_Layer: 0
   m_Name: weaponSprite
   m_TagString: playerWeapon
@@ -416,13 +422,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7877205967074137450}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.674, y: 0.001, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 3368693151895845036}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1577561621613771260
 SpriteRenderer:
   serializedVersion: 2
@@ -477,7 +483,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.45, y: 1.85}
+  m_Size: {x: 2, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -489,7 +495,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7877205967074137450}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Density: 1
   m_Material: {fileID: 0}
@@ -520,11 +526,33 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.45, y: 1.85}
-    newSize: {x: 0.45, y: 1.85}
+    oldSize: {x: 2, y: 1}
+    newSize: {x: 2, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   m_Size: {x: 0.45, y: 1.85}
   m_EdgeRadius: 0
+--- !u!95 &2878556612043290635
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7877205967074137450}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7bfc2a39b8f90254693365e8e72d811a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

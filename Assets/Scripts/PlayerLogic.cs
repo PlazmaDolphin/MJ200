@@ -10,11 +10,13 @@ public class PlayerMove : MonoBehaviour
     public WeaponLogic weapon;
     private float speed = 5f;
     private int scrapCollected = 0;
+    private float initXScale;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+        initXScale = transform.localScale.x;
+        Debug.Log(initXScale);
     }
 
     // Update is called once per frame
@@ -22,8 +24,8 @@ public class PlayerMove : MonoBehaviour
     {
         // Get WASD input and normalize
         Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-        // flip sprite based on mouse position
-        playerSprite.flipX = Input.mousePosition.x < cam.WorldToScreenPoint(transform.position).x;
+        // flip player based on mouse position
+        transform.localScale = new Vector3(initXScale * (Input.mousePosition.x < Screen.width / 2 ? -1 : 1), transform.localScale.y, transform.localScale.z);
         input.Normalize();
         // Move the player based on input
         transform.Translate(input * speed * Time.deltaTime, Space.World);
