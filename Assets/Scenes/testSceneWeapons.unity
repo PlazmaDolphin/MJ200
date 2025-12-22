@@ -632,8 +632,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c22b39bf4e4e85646a2dcc9249f8c822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::InventoryManager
-  scrapText: {fileID: 0}
-  totalScrapText: {fileID: 0}
+  scrapText: {fileID: 1622753006}
+  totalScrapText: {fileID: 1174625857}
 --- !u!4 &1028070112
 Transform:
   m_ObjectHideFlags: 0
@@ -1775,11 +1775,11 @@ SceneRoots:
   m_Roots:
   - {fileID: 90851159722088867}
   - {fileID: 133244787}
-  - {fileID: 1788042858}
   - {fileID: 756601479}
   - {fileID: 792311682}
   - {fileID: 256442712}
   - {fileID: 1926736607}
   - {fileID: 532989885}
   - {fileID: 1220339438}
+  - {fileID: 1788042858}
   - {fileID: 1028070112}

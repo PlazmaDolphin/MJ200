@@ -1,5 +1,6 @@
 PLACING BLOCKS:
 [BASE FUNCTIONALITY COMPLETE]
+- [BUG] 1x1 block hitbox extends too far in x-axis
 
 [FOR CHRIZ]: Fix the layering when objects are close
 - Ex. If player comes in from top, wall should show
@@ -10,6 +11,8 @@ PLACING BLOCKS:
 
 PLAYER WEAPONS:
 [MELEE, GUN, AND GRENADE COMPLETE]
+- [BUG] Melee weapon sometimes registers multiple hits to same target in single swing
+- [BUG] Bullet faces backwards when firing left
 -    - [OPTIONAL]: Bullet goes through player walls,
 -      but only for a short range (like peeking over and shooting)
 -  - [Could leave for CHRIZ]: ammo reloading (takes 6? shots per clip, reloads cost scrap)
@@ -39,3 +42,6 @@ POLICE AI:
 -         if no machines or walls, machine AI targets player
 -   If player has open path and in proximity, always target player
 - [OPTIONAL]: Catapult class flings Type 1 AIs over the wall
+[TIMER]:
+- Police Wave Spawns at 1400 each day
+- After Day 3 Police all die, you win

@@ -40,6 +40,8 @@ public class PlayerMovement : MonoBehaviour
         //setting rigidbody velocity will break knockback, do it the dumb way
         transform.position += (Vector3)moveInput.normalized * moveSpeed * Time.fixedDeltaTime;
         //Rb.linearVelocity = moveInput.normalized * moveSpeed;
+        //lock camera to player
+        Camera.main.transform.position = new Vector3(transform.position.x, transform.position.y, Camera.main.transform.position.z);
     }
 
     public Vector2 GetLastMoveDirection()
