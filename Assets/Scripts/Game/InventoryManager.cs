@@ -35,6 +35,12 @@ public class InventoryManager : MonoBehaviour
 
     //Possible future expansion to add second currency
 
+    private void Start()
+    {
+        scrapText.text = "Scrap: " + scrapCount.ToString();
+        totalScrapText.text = "Total World Scrap: " + totalWorldScrap.ToString();
+    }
+
     /// <summary>
     /// Simple function to add scrap to the inventory from the world.
     /// </summary>

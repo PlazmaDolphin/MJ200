@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // Replace this with the actual key we want for building
-        if (Keyboard.current.spaceKey.wasPressedThisFrame)
+        if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             SetIsBuilding(!isBuilding);
         }
@@ -41,21 +41,30 @@ public class PlayerController : MonoBehaviour
             weapon.SwitchWeapon(Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1);
         }
 
-        SetIsHarvesting(Keyboard.current.fKey.isPressed);
+        if(Keyboard.current.fKey.isPressed)
+            SetIsHarvesting(true);
+        else if(Keyboard.current.fKey.wasReleasedThisFrame)
+            SetIsHarvesting(false);
 
     }
 
     private void SetIsHarvesting(bool isHarvesting)
     {
-        // Prevent from calling multiple times
-        if (this.isHarvesting == isHarvesting) return;
+        if(isBuilding) return; // Can't harvest while building
+        // If there's no harvestable object anymore, do nothing
+        if (currentHarvestable == null && isHarvesting)
+        {
+            //Stop harvesting if we were harvesting
+            SetIsHarvesting(false);
+            return;
+        }
         // Can only move if not harvesting
         Movement.SetCanMove(!isHarvesting);
         if (isHarvesting)
             currentHarvestable?.StartHarvesting();
         else
             currentHarvestable?.StopHarvesting();
-        OnSalvagingStateChanged?.Invoke(isBuilding);
+        OnSalvagingStateChanged?.Invoke(isHarvesting);
         this.isHarvesting = isHarvesting;
     }
 
@@ -63,6 +72,7 @@ public class PlayerController : MonoBehaviour
     {
         // Prevent from calling multiple times
         if (this.isBuilding == isBuilding) return;
+        if (isHarvesting) return;
 
         // Can only move if not building (we can ofcourse change this eaasily)
         Movement.SetCanMove(!isBuilding);

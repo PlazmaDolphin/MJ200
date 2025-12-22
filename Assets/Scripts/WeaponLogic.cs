@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 //TODO: Add support for being unarmed
 public class WeaponLogic : MonoBehaviour
 {
-    public GameObject weapon, bulletPrefab;
+    public GameObject weapon, bulletPrefab, bulletSpawn;
     public Animator WeaponAnimator;
     public Sprite[] weaponSprites;
     public GrenadeGuide grenade;
@@ -49,7 +49,7 @@ public class WeaponLogic : MonoBehaviour
         if (weaponType == 1)
         {
             // Fire bullet
-            GameObject bullet = Instantiate(bulletPrefab, weapon.transform.position, transform.rotation);
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
             bullet.GetComponent<Bullet>().initBullet(GetNormalizedMouseDirection() * GUN_VEL, GUN_DAMAGE, GUN_KNOCKBACK);
         }
         if (weaponType == 2)
