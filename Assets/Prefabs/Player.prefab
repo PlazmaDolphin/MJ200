@@ -62,7 +62,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227438882793746657}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -174,7 +174,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3600443225354598485}
-  - component: {fileID: 2438506994130480911}
   - component: {fileID: 7152446507376511172}
   - component: {fileID: 3828251439131567093}
   - component: {fileID: 6255312339621164391}
@@ -205,23 +204,6 @@ Transform:
   - {fileID: 2466927741848327840}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2438506994130480911
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2222141181801252736}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75541f55e5412924885bb1b1b6a0bbaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: '::'
-  cam: {fileID: 0}
-  playerCollider: {fileID: 3828251439131567093}
-  scrapText: {fileID: 0}
-  playerSprite: {fileID: 4889067633514597937}
-  weapon: {fileID: 8113634610881975356}
 --- !u!50 &7152446507376511172
 Rigidbody2D:
   serializedVersion: 5
@@ -298,8 +280,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2eb801a323744d90f72ccc943796a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  scrapCollected: 0
+  weapon: {fileID: 8113634610881975356}
   isBuilding: 0
+  isHarvesting: 0
 --- !u!114 &2156952220563651007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,6 +427,7 @@ MonoBehaviour:
   idle: {fileID: 7400000, guid: f4b9aac5b33f17f48b45a49d727a9d8d, type: 2}
   walk: {fileID: 7400000, guid: a38f6ae47c2bf384e8c354bf178ecd99, type: 2}
   build: {fileID: 7400000, guid: 9f05bfafa53711f46ae9ada665c327cd, type: 2}
+  salvaging: {fileID: 0}
 --- !u!1 &7876140794074721897
 GameObject:
   m_ObjectHideFlags: 0

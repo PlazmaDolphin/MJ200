@@ -5,11 +5,10 @@ public class PlayerMove : MonoBehaviour
 {
     public Camera cam;
     public Collider2D playerCollider;
-    public TextMeshProUGUI scrapText; // TODO: Replace with proper UI element
+    //public TextMeshProUGUI scrapText; // TODO: Replace with proper UI element
     public SpriteRenderer playerSprite;
     public WeaponLogic weapon;
     private float speed = 5f;
-    private int scrapCollected = 0;
     private float initXScale;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -31,14 +30,16 @@ public class PlayerMove : MonoBehaviour
         // force player rotation to be 0
         transform.rotation = Quaternion.Euler(0, 0, 0);
         // center camera to player position
-        cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
+        //cam.transform.position = new Vector3(transform.position.x, transform.position.y, cam.transform.position.z);
         // handle weapon usage
-        if (Input.GetMouseButtonDown(0) && !worldGrid.gridMode) {
+        if (Input.GetMouseButtonDown(0) && !worldGrid.gridMode)
+        {
             weapon.UseWeapon();
         }
-        scrapText.text = "Scrap: " + scrapCollected;
+        //scrapText.text = "Scrap: " + InventoryManager.Instance.ScrapCount;
         // scroll wheel to change weapon if not in grid mode
-        if (Input.GetAxis("Mouse ScrollWheel") != 0 && !worldGrid.gridMode) {
+        if (Input.GetAxis("Mouse ScrollWheel") != 0 && !worldGrid.gridMode)
+        {
             weapon.SwitchWeapon(Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1);
         }
 
@@ -48,7 +49,6 @@ public class PlayerMove : MonoBehaviour
     {
         if (other.CompareTag("scrap"))
         {
-            scrapCollected++;
             other.gameObject.GetComponent<ScrapLogic>().Die();
         }
     }
