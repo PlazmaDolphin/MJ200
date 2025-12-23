@@ -29,10 +29,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 8347631594450114659}
+  - {fileID: 2450559715866737051}
   - {fileID: 8425734742289563362}
   - {fileID: 7268099187942163734}
-  - {fileID: 2450559715866737051}
+  - {fileID: 8347631594450114659}
   m_Father: {fileID: 1999538539615147301}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -442,7 +442,7 @@ GameObject:
   - component: {fileID: 5160984322655811802}
   - component: {fileID: 1647053384710278832}
   m_Layer: 5
-  m_Name: Base Button (2)
+  m_Name: Youtube Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -549,7 +549,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5160984322655811802}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b007f40534a6ae54f9c0da3660be2c4d, type: 2}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: OpenURL
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &7448374698968711758
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,7 +575,7 @@ GameObject:
   - component: {fileID: 6082553671193586657}
   - component: {fileID: 2397922148545565260}
   m_Layer: 5
-  m_Name: Base Button (4)
+  m_Name: Itch Button (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -670,7 +682,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6082553671193586657}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b007f40534a6ae54f9c0da3660be2c4d, type: 2}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: OpenURL
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8085037417803798944
 GameObject:
   m_ObjectHideFlags: 0
@@ -684,7 +708,7 @@ GameObject:
   - component: {fileID: 5402901214571985659}
   - component: {fileID: 7197707227323501136}
   m_Layer: 5
-  m_Name: Base Button (1)
+  m_Name: Bluesky Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -791,7 +815,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5402901214571985659}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b007f40534a6ae54f9c0da3660be2c4d, type: 2}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: OpenURL
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8200863340586631133
 GameObject:
   m_ObjectHideFlags: 0
@@ -880,7 +916,7 @@ GameObject:
   - component: {fileID: 6527161657787759875}
   - component: {fileID: 17860387462345157}
   m_Layer: 5
-  m_Name: Base Button (3)
+  m_Name: Git Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -987,4 +1023,16 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6527161657787759875}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: b007f40534a6ae54f9c0da3660be2c4d, type: 2}
+        m_TargetAssemblyTypeName: GameController, Assembly-CSharp
+        m_MethodName: OpenURL
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
