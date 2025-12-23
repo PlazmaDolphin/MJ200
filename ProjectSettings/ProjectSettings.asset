@@ -13,7 +13,7 @@ PlayerSettings:
   useOnDemandResources: 0
   accelerometerFrequency: 60
   companyName: DefaultCompany
-  productName: MJ200
+  productName: Scrappy Feet
   defaultCursor: {fileID: 2800000, guid: 9233f4b76984c0342851bff850e954bb, type: 3}
   cursorHotspot: {x: 0, y: 0}
   m_SplashScreenBackgroundColor: {r: 0.26666668, g: 0.16470589, b: 0.24705884, a: 1}
@@ -143,7 +143,7 @@ PlayerSettings:
   loadStoreDebugModeEnabled: 0
   visionOSBundleVersion: 1.0
   tvOSBundleVersion: 1.0
-  bundleVersion: 1.0
+  bundleVersion: 1.0 Jam Version 23-12-2025
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0

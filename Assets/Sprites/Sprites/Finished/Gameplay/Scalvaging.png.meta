@@ -1,28 +1,82 @@
 fileFormatVersion: 2
-guid: 24f8ec9b6f09d014fa212fabfdf2985e
+guid: 6f82bf669c5c8b542931bed12c11b9a5
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -749024654251515319
-    second: spritesheet (3)_0
+      213: 5878203096085206695
+    second: spritesheet (4)_0
   - first:
-      213: -1025294881627752460
-    second: spritesheet (3)_1
+      213: 8541543648840734694
+    second: spritesheet (4)_1
   - first:
-      213: 5676210040115815652
-    second: spritesheet (3)_2
+      213: 3316518890299791053
+    second: spritesheet (4)_2
   - first:
-      213: -3336086821669477768
-    second: spritesheet (3)_3
+      213: -1704431106280724860
+    second: spritesheet (4)_3
   - first:
-      213: 7513226289831329176
-    second: spritesheet (3)_4
+      213: 4207788018275496487
+    second: spritesheet (4)_4
   - first:
-      213: 4529837530519007653
-    second: spritesheet (3)_5
+      213: 5975726449670904513
+    second: spritesheet (4)_5
   - first:
-      213: -589748259030667114
-    second: spritesheet (3)_6
+      213: 8473851743285204118
+    second: spritesheet (4)_6
+  - first:
+      213: 5403876758051066460
+    second: spritesheet (4)_7
+  - first:
+      213: -3874694862228731190
+    second: spritesheet (4)_8
+  - first:
+      213: 4860029743011146350
+    second: spritesheet (4)_9
+  - first:
+      213: 7955397981662994694
+    second: spritesheet (4)_10
+  - first:
+      213: 115064980881338066
+    second: spritesheet (4)_11
+  - first:
+      213: 8304188656805073307
+    second: spritesheet (4)_12
+  - first:
+      213: -5408344410388160618
+    second: spritesheet (4)_13
+  - first:
+      213: 4742467122196140809
+    second: spritesheet (4)_14
+  - first:
+      213: 8803598591951018172
+    second: spritesheet (4)_15
+  - first:
+      213: -1524150919126443153
+    second: spritesheet (4)_16
+  - first:
+      213: 8967428049853291890
+    second: spritesheet (4)_17
+  - first:
+      213: -1595908794271481173
+    second: spritesheet (4)_18
+  - first:
+      213: 6462744559374992709
+    second: spritesheet (4)_19
+  - first:
+      213: 9008413948855292086
+    second: spritesheet (4)_20
+  - first:
+      213: 7349622325278706834
+    second: spritesheet (4)_21
+  - first:
+      213: -3533444271030890508
+    second: spritesheet (4)_22
+  - first:
+      213: -1716347796032273025
+    second: spritesheet (4)_23
+  - first:
+      213: -2838666273337610584
+    second: spritesheet (4)_24
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -140,11 +194,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Build_0
+      name: Scalvaging_0
       rect:
         serializedVersion: 2
         x: 0
@@ -159,14 +226,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06f0428f72c132543bc2cf4e1aab62b4
-      internalID: -299394135
+      spriteID: b03cefc7ebbedff4badc22ab1301cf2a
+      internalID: 2090151919
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Build_1
+      name: Scalvaging_1
       rect:
         serializedVersion: 2
         x: 640
@@ -181,14 +248,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8685694870af9ad48b184953b878f7a9
-      internalID: -513417996
+      spriteID: f6fe5ecead866674ebb1414817adbae4
+      internalID: -1376304082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Build_2
+      name: Scalvaging_2
       rect:
         serializedVersion: 2
         x: 1280
@@ -203,14 +270,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 89424bb1f70046f47b6ddc652e5a14f4
-      internalID: 1664050398
+      spriteID: 0cee0fbc5359fde4394ccb2e18f9ef73
+      internalID: 921273211
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Build_3
+      name: Scalvaging_3
       rect:
         serializedVersion: 2
         x: 1920
@@ -225,8 +292,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bb63dc5c7a72d984fab1a588e5a039b3
-      internalID: -1710701003
+      spriteID: 435ec07cd283cdc469bb1458e5ce785c
+      internalID: 1999275609
       vertices: []
       indices: 
       edges: []
@@ -235,7 +302,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5c0630ae1fef91549bac70a39131a63f
+    spriteID: 75a9d832dde2c43469d5f60c689a1129
     internalID: 0
     vertices: []
     indices: 
@@ -247,10 +314,10 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":640.0,"y":640.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":1,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      Build_0: -299394135
-      Build_1: -513417996
-      Build_2: 1664050398
-      Build_3: -1710701003
+      Scalvaging_0: 2090151919
+      Scalvaging_1: -1376304082
+      Scalvaging_2: 921273211
+      Scalvaging_3: 1999275609
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
