@@ -13,7 +13,7 @@ public class PoliceSpawner : MonoBehaviour
     private const int GAME_START_TIME = 600; // Game time starts at 10:00
     private const int POLICE_GOT_BORED_TIME = 600; // 06:00
     private const int POLICE_RAID_TIME = 1400; // 14:00
-    private const float MINS_PER_SECOND_SCALE = 15f;
+    private const float MINS_PER_SECOND_SCALE = 25f;
     private const float POLICE_LINE_LENGTH = 20f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

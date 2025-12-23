@@ -20,9 +20,9 @@ PLAYER WEAPONS:
 
 POLICE AI:
 [BASIC FUNCTIONS]
-- Use NavMesh to find a path to the player
--   Navigate around walls
--   Update the mesh upon each block placement
++ Use NavMesh to find a path to the player
++   Navigate around walls
++   Update the mesh upon each block placement
 - If no path can be found:
 -   [BASIC]: Move in straight line to player, break walls in the way
 -     - Give police attack
@@ -43,5 +43,5 @@ POLICE AI:
 -   If player has open path and in proximity, always target player
 - [OPTIONAL]: Catapult class flings Type 1 AIs over the wall
 [TIMER]:
-- Police Wave Spawns at 1400 each day
-- After Day 3 Police all die, you win
++ Police Wave Spawns at 1400 each day
++ After Day 3 Police all die, you win
