@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NUnit.Framework.Interfaces;
 using UnityEngine;
@@ -119,6 +120,7 @@ public class worldGrid : MonoBehaviour
 
         // check if placement is valid (no overlapping with placed blocks)
         validPlacement = !DoesBlockOverlap(clampedGrid);
+        validPlacement = CanPayForBlock();
 
         // use the collider's world-space bounds to get a Vector2 center and size for Physics2D.OverlapBox
         var boxBounds = blockGuide.GetComponent<BoxCollider2D>().bounds;
@@ -139,6 +141,8 @@ public class worldGrid : MonoBehaviour
         // place wall with LMB
         if (Input.GetMouseButtonDown(0) && gridMode && validPlacement)
         {
+            var buildingCost = 0;
+
             GameObject newWall = Instantiate(currentBlockSize == 2 ? turretPrefab : wallPrefab, blockGuide.transform.position, blockGuide.transform.rotation, wallBlockHolder.transform);
             newWall.GetComponent<SpriteRenderer>().sprite = blockSprites[currentBlockSize];
             // Update collider to match block size
@@ -162,12 +166,27 @@ public class worldGrid : MonoBehaviour
                 navObs.size = obsSize;
                 // keep vertical center as-is; zero X/Z offset so obstacle is centered on prefab
                 navObs.center = new Vector3(0f, navObs.center.y, 0f);
+
+                
             }
+
+            Vector2Int size = blockDimensions[currentBlockSize];
+            buildingCost = size.x * size.y;
+            InventoryManager.Instance.RemoveScrap(buildingCost);
 
             AddBlockToPlaced(clampedGrid, newWall.GetComponent<theWall>());
         }
 
     }
+
+    private bool CanPayForBlock()
+    {
+        Vector2Int dims = blockDimensions[currentBlockSize];
+        int tiles = dims.x * dims.y;
+
+        return InventoryManager.Instance.ScrapCount >= tiles;
+    }
+
     Vector3 GetMouseWorldPosition(float gridZ = 0f)
     {
         Vector3 mousePos = Input.mousePosition;
