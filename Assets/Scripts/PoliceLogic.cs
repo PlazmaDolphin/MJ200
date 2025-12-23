@@ -13,6 +13,8 @@ public class PoliceLogic : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        // force z-position to zero
+        
         testPath = new NavMeshPath();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -23,6 +25,7 @@ public class PoliceLogic : MonoBehaviour
 
     void Update()
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y, 0);
         if (pursuingWall)
         {
             // If the wall reference was destroyed, stop pursuing it.
