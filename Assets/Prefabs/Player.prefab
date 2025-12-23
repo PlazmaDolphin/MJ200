@@ -58,9 +58,9 @@ MonoBehaviour:
   - {fileID: -4670347095062736498, guid: e6024c81c598bd844b291096edd31fa9, type: 3}
   - {fileID: -1791783992758969951, guid: c4fed541a8c8ce74eaa262f6f4cd934e, type: 3}
   grenade: {fileID: 4140240703350599985}
-  stabSound: {fileID: 0}
-  gunShootSound: {fileID: 0}
-  grenadeThrowSound: {fileID: 0}
+  stabSound: {fileID: 11400000, guid: 0b578dc96ff77c141a80bb676f9ad459, type: 2}
+  gunShootSound: {fileID: 11400000, guid: 066394a0cf53aaf43a3ecff26ec8bb6a, type: 2}
+  grenadeThrowSound: {fileID: 11400000, guid: 1c04b9b0806d885409fc6d655c501398, type: 2}
 --- !u!50 &1935972499995274309
 Rigidbody2D:
   serializedVersion: 5

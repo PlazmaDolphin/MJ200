@@ -261,8 +261,8 @@ MonoBehaviour:
   rb: {fileID: 4544448170543814795}
   sprite: {fileID: 1244743316946202606}
   agent: {fileID: 7530288267327112345}
-  hurtSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  hurtSound: {fileID: 11400000, guid: 9483c3e270ef667479298e9d2b7cc320, type: 2}
+  deathSound: {fileID: 11400000, guid: 965b7d15008ef5541b15eeb306d707b5, type: 2}
 --- !u!195 &7530288267327112345
 NavMeshAgent:
   m_ObjectHideFlags: 0
