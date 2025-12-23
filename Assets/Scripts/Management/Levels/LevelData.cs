@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(fileName = "Level", menuName = "Level/Level Data")]
 public class LevelData : ScriptableObject
@@ -15,12 +16,13 @@ public class LevelData : ScriptableObject
 
     public void LoadScene()
     {
-        //SceneManager.LoadScene(this.name);
+        SceneManager.LoadScene(sceneField.SceneName);
         //SceneLoader.Instance.LoadScene(this);
     }
 
     public void ReloadCurrentScene()
     {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //SceneLoader.Instance.ReloadCurrentScene();
     }
 }

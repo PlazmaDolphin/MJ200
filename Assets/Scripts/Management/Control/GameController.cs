@@ -1,28 +1,8 @@
 using UnityEngine;
-using Debug = UnityEngine.Debug;
 
-public class GameController : MonoBehaviour
+[CreateAssetMenu(fileName = "Game Controller", menuName = "Misc/Game Controller")]
+public class GameController : ScriptableObject
 {
-    // Used to spawn things via other scripts
-    private static GameController _spawned;
-
-    public static GameController SpawnedInstance
-    {
-        get
-        {
-            if (_spawned == null)
-            {
-                GameObject newObject = new GameObject("Game Controller (Spawned)");
-                var controller = newObject.AddComponent<GameController>();
-
-                _spawned = Instantiate(controller);
-                DontDestroyOnLoad(_spawned.gameObject);
-            }
-
-            return _spawned;
-        }
-    }
-
     #region APPLICATION
     public void OpenURL(string url)
     {
@@ -36,9 +16,13 @@ public class GameController : MonoBehaviour
 
     public void ExitGame()
     {
+        Debug.Log($"Exited game");
 
+        if (!Application.isEditor)
+        {
+            Application.Quit();
+        }
     }
-
 
     #endregion
 
