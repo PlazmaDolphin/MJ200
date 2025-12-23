@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.Audio;
 
-[CreateAssetMenu(fileName = "Sound", menuName = "Misc/Sound Effect")]
+[CreateAssetMenu(fileName = "Sound", menuName = "Sound Effects/Sound Effect")]
 public class SoundFXData : ScriptableObject
 {
     [Header("References")]
@@ -16,16 +16,26 @@ public class SoundFXData : ScriptableObject
     /// <summary>
     /// Plays this sound effect at the given position.
     /// </summary>
-    public void Play(Transform source = null)
+    public virtual void Play(Transform source = null)
+    {
+        PlayLogic(source);
+    }
+
+    protected AudioSource PlayLogic(Transform source)
     {
         if (clips == null || clips.Length == 0 || mixerGroup == null)
         {
             Debug.LogWarning($"SoundFXData '{name}' is not set up correctly.", this);
-            return;
+            return null;
         }
 
-        if (!SoundFXManager.HasInstance) return;
+        SoundFXManager instance = SoundFXManager.Instance;
 
-        SoundFXManager.Instance.PlaySoundFX(this, source);
+        if (instance == null)
+        {
+            return null;
+        }
+
+        return SoundFXManager.Instance.PlaySoundFX(this, source);
     }
 }

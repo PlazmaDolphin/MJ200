@@ -57,7 +57,7 @@ public class SoundFXManager : MonoBehaviourSingleton<SoundFXManager>
     #endregion
 
     #region PLAYING SFX
-    public void PlaySoundFX(SoundFXData soundFXData, Transform source)
+    public AudioSource PlaySoundFX(SoundFXData soundFXData, Transform source)
     {
         source = source != null ? source : transform;
         AudioSource audioSource = GetAudioSource(source.position);
@@ -77,6 +77,7 @@ public class SoundFXManager : MonoBehaviourSingleton<SoundFXManager>
 
         float length = audioSource.clip.length;
         StartCoroutine(WaitToEnd(audioSource, length + 0.01f));
+        return audioSource;
     }
 
     private AudioSource GetAudioSource(Vector2 origin)

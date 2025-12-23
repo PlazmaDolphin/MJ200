@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private UnityEvent onLose;
 
     [Header("Sound Effects")]
-    [SerializeField] private AudioSource buildingAudio;
+    [SerializeField] private RepeatingSFX buildingSound;
     [SerializeField] private SoundFXData collectScrapSound;
 
     [Space(10f), SerializeField] private SoundFXData hurtSound;
@@ -79,10 +79,10 @@ public class PlayerController : MonoBehaviour
         if (Keyboard.current.rKey.wasReleasedThisFrame)
             weapon.CancelReloadHold();
 
-        if(!canBeHit)
+        if (!canBeHit)
         {
             invincibilityTimer -= Time.deltaTime;
-            if(invincibilityTimer < 0)
+            if (invincibilityTimer < 0)
                 canBeHit = true;
         }
     }
@@ -123,8 +123,11 @@ public class PlayerController : MonoBehaviour
         if (this.isBuilding == isBuilding) return;
         if (isHarvesting) return;
 
-        if (buildingAudio != null)
-            buildingAudio.gameObject.SetActive(isBuilding);
+        if (buildingSound != null)
+        {
+            buildingSound.Play();
+            buildingSound.SetIsPlaying(isBuilding);
+        }
 
         // Can only move if not building (we can ofcourse change this eaasily)
         Movement.SetCanMove(!isBuilding);
@@ -149,8 +152,6 @@ public class PlayerController : MonoBehaviour
         {
             if (!canBeHit) return;
 
-            if (hurtSound) hurtSound.Play();
-
             // Take Damage
             SetCurrentHealth(currentHealth - 1);
             OnHealthChanged?.Invoke(currentHealth);
@@ -165,6 +166,11 @@ public class PlayerController : MonoBehaviour
                 // Implement game over logic here
                 onLose.Invoke();
             }
+            else
+            {
+                if (hurtSound) hurtSound.Play();
+            }
+
             //apply knockback
             Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
             Rb.AddForce(knockbackDirection * 20f, ForceMode2D.Impulse);

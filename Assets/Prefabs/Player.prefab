@@ -276,8 +276,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1443845487
+  m_SortingOrder: -1
   m_TargetDisplay: 0
 --- !u!114 &1457650538093656200
 MonoBehaviour:
@@ -441,6 +441,8 @@ MonoBehaviour:
   isHarvesting: 0
   maxHealth: 3
   currentHealth: 0
+  canBeHit: 0
+  invinTime: 1
   onLose:
     m_PersistentCalls:
       m_Calls:
@@ -456,11 +458,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  buildingAudio: {fileID: 0}
-  collectScrapSound: {fileID: 0}
-  hurtSound: {fileID: 0}
-  healSound: {fileID: 0}
-  deathSound: {fileID: 0}
+  buildingSound: {fileID: 11400000, guid: 0c859e4f6f82e8d4fb9c969cb76acac9, type: 2}
+  collectScrapSound: {fileID: 11400000, guid: c9e58d2a76af3a74985955923add368b, type: 2}
+  hurtSound: {fileID: 11400000, guid: 164971d173329684a959aa4f0baa5594, type: 2}
+  healSound: {fileID: 11400000, guid: 352d6ec79ba21dc4baf8372213d155bc, type: 2}
+  deathSound: {fileID: 11400000, guid: 1a97ed51df8cc8143b47f815cdc36b2b, type: 2}
 --- !u!114 &2156952220563651007
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -545,7 +547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.46226418, g: 0.46226418, b: 0.46226418, a: 1}
+  m_Color: {r: 0.9215687, g: 0.42352945, b: 0.59607846, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -902,8 +904,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 0.88235295, g: 0.827451, b: 0.78431374, a: 1}
+      key1: {r: 0.88235295, g: 0.827451, b: 0.78431374, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 1}

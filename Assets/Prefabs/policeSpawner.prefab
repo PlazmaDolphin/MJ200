@@ -68,6 +68,8 @@ MonoBehaviour:
   PoliceRaidTime: 1400
   MinsPerSecondScale: 25
   PoliceLineLenght: 20
+  raidStartSound: {fileID: 11400000, guid: 45b889aaec79fee4ab8ecfea247c080b, type: 2}
+  endRaidSound: {fileID: 11400000, guid: d6cf56cfa072bba46ae63a4d4df6dd3f, type: 2}
 --- !u!212 &9111211351827969084
 SpriteRenderer:
   serializedVersion: 2

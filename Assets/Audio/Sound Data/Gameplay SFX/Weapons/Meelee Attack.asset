@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 1813623601333187341, guid: 22a04ff0124f0064598ff56c596125bc, type: 2}
   clips:
-  - {fileID: 8300000, guid: 4f8600e30b997704390880a85f1cdb7d, type: 3}
-  - {fileID: 8300000, guid: abe3772b9f1918b4081d07f7684b89d7, type: 3}
-  - {fileID: 8300000, guid: dab330bd508cad0489e53c69b534daab, type: 3}
-  volume: 1
+  - {fileID: 8300000, guid: 2145d3123302d4e4fb5910fcb3bc406b, type: 3}
+  - {fileID: 8300000, guid: be98fadb4da5ba6498045e16e1170236, type: 3}
+  - {fileID: 8300000, guid: cc55c84c9e574d741a7fb10ae53d6cdb, type: 3}
+  volume: 0.6
   minPitch: 0.9
   maxPitch: 1

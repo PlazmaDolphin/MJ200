@@ -10,14 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbd5eae052c5e354ebef8b3c28323716, type: 3}
-  m_Name: Gun Shoot
+  m_Name: Player Death
   m_EditorClassIdentifier: 
   mixerGroup: {fileID: 1813623601333187341, guid: 22a04ff0124f0064598ff56c596125bc, type: 2}
   clips:
-  - {fileID: 8300000, guid: 22fb3faef5f0a6a44b594c473bcd3b11, type: 3}
-  - {fileID: 8300000, guid: 326c18bc7ec1a464b993bd1dd5bf511d, type: 3}
-  - {fileID: 8300000, guid: 71e684dc0d4eb0946a10d441c58773d4, type: 3}
-  - {fileID: 8300000, guid: 9a43660d6fb58ac48a778ac9d0ede064, type: 3}
-  volume: 0.6
+  - {fileID: 8300000, guid: c91fcf414acc0344cb03b13996f1bf3b, type: 3}
+  volume: 1
   minPitch: 0.9
   maxPitch: 1
