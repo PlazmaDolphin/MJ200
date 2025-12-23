@@ -131,5 +131,5 @@ MonoBehaviour:
   OnFadeOut:
     m_PersistentCalls:
       m_Calls: []
-  targetGameState: {fileID: 11400000, guid: ff0afe119616f0e4581d36dbdb672b77, type: 2}
+  targetGameState: {fileID: 0}
   pausedTolerance: 2
