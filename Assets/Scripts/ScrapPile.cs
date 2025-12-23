@@ -1,9 +1,10 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public interface IHarvestable
 {
-    void StartHarvesting();
+    void StartHarvesting(System.Action<float> onProgress);
     void StopHarvesting();
     void CollectScrap(int amount);
 }
@@ -23,21 +24,18 @@ public class ScrapPile : MonoBehaviour, IHarvestable
 
     private Coroutine collectCoroutine;
 
-    [Header("Sound Effects")]
-    [SerializeField] private SoundFXData collectedSound;
-
     // Update is called once per frame
     void Update()
     {
 
     }
 
-    public void StartHarvesting()
+    public void StartHarvesting(System.Action<float> onProgress)
     {
         Debug.Log("Collecting scrap...");
         if (collectCoroutine == null)
         {
-            collectCoroutine = StartCoroutine(ScrapCollectingCoroutine());
+            collectCoroutine = StartCoroutine(ScrapCollectingCoroutine(onProgress));
         }
     }
 
@@ -48,6 +46,7 @@ public class ScrapPile : MonoBehaviour, IHarvestable
             StopCoroutine(collectCoroutine);
             collectCoroutine = null;
             Debug.Log("Stopped collecting scrap.");
+
         }
     }
 
@@ -114,17 +113,25 @@ public class ScrapPile : MonoBehaviour, IHarvestable
             //(CA) Will pick this up later with a Shader change or outline effect 
         }
     }
-    IEnumerator ScrapCollectingCoroutine()
+    IEnumerator ScrapCollectingCoroutine(System.Action<float> onProgress)
     {
-        yield return new WaitForSeconds(harvestTime);
-
         while (true)
         {
-            // Collect scrap logic here
-            if (collectedSound) collectedSound.Play();
+            float t = 0f;
+
+            while (t < harvestTime)
+            {
+                t += Time.deltaTime;
+                onProgress?.Invoke(t / harvestTime);
+                yield return null;
+            }
+
+            // 1 scrap tick
             CollectScrap();
             Debug.Log("Scrap collected!");
-            yield return new WaitForSeconds(harvestTime); // Collect scrap every 3 seconds
+
+            // reset progress voor volgende tick
+            onProgress?.Invoke(0f);
         }
     }
 

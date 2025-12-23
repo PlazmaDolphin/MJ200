@@ -1,8 +1,12 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using TMPro;
+using UnityEngine;
 using UnityEngine.InputSystem;
 //TODO: Add support for being unarmed
 public class WeaponLogic : MonoBehaviour
 {
+    public RadialLoader radialLoader;
+    public TextMeshProUGUI ammoDisplay;
     public GameObject weapon, bulletPrefab, bulletSpawn;
     public Animator WeaponAnimator;
     public Sprite[] weaponSprites;
@@ -14,8 +18,11 @@ public class WeaponLogic : MonoBehaviour
     private const int KNIFE_DAMAGE = 1, GUN_DAMAGE = 2;
     private const float GUN_VEL = 10f;
     private float lastAttack;
-    // TODO: Add other weapons than knife
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Coroutine reloadRoutine;
+    private bool isReloading;
+
+    private int ammoClipSize = 6;
+    private int currentAmmo;
 
     [Header("Sound Effects")]
     [SerializeField] private SoundFXData stabSound;
@@ -26,6 +33,8 @@ public class WeaponLogic : MonoBehaviour
     {
         lastAttack = Time.time - KNIFE_COOLDOWN;
         SwitchWeapon(weaponType);
+        currentAmmo = ammoClipSize;
+        ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
     }
 
     // Update is called once per frame
@@ -57,11 +66,15 @@ public class WeaponLogic : MonoBehaviour
         }
         if (weaponType == 1)
         {
-            if (gunShootSound) gunShootSound.Play();
-
-            // Fire bullet
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
-            bullet.GetComponent<Bullet>().initBullet(GetNormalizedMouseDirection() * GUN_VEL, GUN_DAMAGE, GUN_KNOCKBACK);
+            if (currentAmmo > 0)
+            {
+                if (gunShootSound) gunShootSound.Play();
+                // Fire bullet
+                GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
+                bullet.GetComponent<Bullet>().initBullet(GetNormalizedMouseDirection() * GUN_VEL, GUN_DAMAGE, GUN_KNOCKBACK);
+                currentAmmo--;
+                ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
+            }
         }
         if (weaponType == 2)
         {
@@ -71,6 +84,57 @@ public class WeaponLogic : MonoBehaviour
         }
         Invoke(nameof(EndAttack), KNIFE_DURATION);
     }
+
+    public void BeginReloadHold()
+    {
+        if (isReloading) return;
+        if (weaponType != 1) return;
+        if (InventoryManager.Instance.ScrapCount <= 0) return;
+        if (currentAmmo >= ammoClipSize) return; // optioneel
+
+        reloadRoutine = StartCoroutine(ReloadHoldRoutine(1f));
+    }
+
+    public void CancelReloadHold()
+    {
+        if (!isReloading) return;
+
+        if (reloadRoutine != null)
+        {
+            StopCoroutine(reloadRoutine);
+            reloadRoutine = null;
+        }
+
+        isReloading = false;
+        radialLoader.CancelLoading();
+    }
+
+    private IEnumerator ReloadHoldRoutine(float duration)
+    {
+        isReloading = true;
+        radialLoader.StartLoading(duration);
+
+        float t = 0f;
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            radialLoader.SetProgress(t / duration);
+            yield return null;
+        }
+
+        FinishReload();
+        isReloading = false;
+        reloadRoutine = null;
+        radialLoader.CompleteAndHide();
+    }
+
+    private void FinishReload()
+    {
+        currentAmmo = ammoClipSize;
+        InventoryManager.Instance.RemoveScrap(1);
+        ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
+    }
+
     private float GetMouseAngle()
     {
         Vector3 ms = Mouse.current.position.ReadValue();

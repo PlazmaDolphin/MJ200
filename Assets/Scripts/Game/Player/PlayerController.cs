@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D Rb { get; private set; }
     public PlayerMovement Movement { get; private set; }
 
+    public RadialLoader radialLoader;
+
     [Header("Weapons")]
     private IHarvestable currentHarvestable;
     public WeaponLogic weapon;
@@ -66,10 +68,18 @@ public class PlayerController : MonoBehaviour
         else if (Keyboard.current.fKey.wasReleasedThisFrame)
             SetIsHarvesting(false);
 
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+            weapon.BeginReloadHold();
+
+        if (Keyboard.current.rKey.wasReleasedThisFrame)
+            weapon.CancelReloadHold();
+
     }
 
     private void SetIsHarvesting(bool isHarvesting)
     {
+        if (this.isHarvesting == isHarvesting) return;
+
         if (isBuilding) return; // Can't harvest while building
         // If there's no harvestable object anymore, do nothing
         if (currentHarvestable == null && isHarvesting)
@@ -81,10 +91,18 @@ public class PlayerController : MonoBehaviour
         // Can only move if not harvesting
         Movement.SetCanMove(!isHarvesting);
         if (isHarvesting)
-            currentHarvestable?.StartHarvesting();
+        {
+            radialLoader.StartLoading(1f); // duration is cosmetisch
+            currentHarvestable.StartHarvesting(
+                p => radialLoader.SetProgress(p)
+            );
+        }
         else
+        {
+            radialLoader.CompleteAndHide();
             currentHarvestable?.StopHarvesting();
-        OnSalvagingStateChanged?.Invoke(isHarvesting);
+            OnSalvagingStateChanged?.Invoke(isHarvesting);
+        }
         this.isHarvesting = isHarvesting;
     }
 
@@ -94,7 +112,8 @@ public class PlayerController : MonoBehaviour
         if (this.isBuilding == isBuilding) return;
         if (isHarvesting) return;
 
-        buildingAudio.gameObject.SetActive(isBuilding);
+        if (buildingAudio != null)
+            buildingAudio.gameObject.SetActive(isBuilding);
 
         // Can only move if not building (we can ofcourse change this eaasily)
         Movement.SetCanMove(!isBuilding);

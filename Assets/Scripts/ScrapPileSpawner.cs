@@ -40,7 +40,7 @@ public class ScrapPileSpawner : MonoBehaviour
     }
     public void Update()
     {
-        if (Keyboard.current.pKey.wasPressedThisFrame)
+        if (Keyboard.current.oKey.wasPressedThisFrame)
         {
             Destroy(scrapPileParent.gameObject);
             scrapPileParent = new GameObject("ScrapPiles").transform;

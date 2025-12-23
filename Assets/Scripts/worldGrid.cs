@@ -1,6 +1,8 @@
 using System.Collections.Generic;
+using NUnit.Framework.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class worldGrid : MonoBehaviour
 {
@@ -16,10 +18,10 @@ public class worldGrid : MonoBehaviour
 
     private GameObject wallBlockHolder;
 
-    private enum Direction{Up, Left, Down, Right}    
+    private enum Direction { Up, Left, Down, Right }
     private Direction currentDirection = Direction.Up;
     private int currentBlockSize = 0;
-    
+
     // Define block dimensions for each size: (width, height)
     private Vector2Int[] blockDimensions = new Vector2Int[]
     {
@@ -69,9 +71,11 @@ public class worldGrid : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
         //toggle grid on/off with E key
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E))
+        {
             gridOverlay.SetActive(!gridOverlay.activeSelf);
             gridMode = !gridMode;
             blockGuide.SetActive(gridMode);
@@ -85,9 +89,11 @@ public class worldGrid : MonoBehaviour
             else
                 currentDirection = (Direction)(((int)currentDirection + 1) % 4);
         }
+
         // change block size with scroll wheel
         float scroll = Input.GetAxis("Mouse ScrollWheel");
-        if (gridMode && scroll != 0){
+        if (gridMode && scroll != 0)
+        {
             currentBlockSize += scroll > 0 ? 1 : -1;
             currentBlockSize %= blockDimensions.Length;
             if (currentBlockSize == -1) currentBlockSize = blockDimensions.Length - 1;
@@ -108,27 +114,33 @@ public class worldGrid : MonoBehaviour
             blockGuide.transform.position.y + (blockDims.y - 1) * GridOverlay.cellSize * 0.5f,
             blockGuide.transform.position.z
         );
-        
+
         validPlacement = true;
-        
+
         // check if placement is valid (no overlapping with placed blocks)
         validPlacement = !DoesBlockOverlap(clampedGrid);
-        
+
         // use the collider's world-space bounds to get a Vector2 center and size for Physics2D.OverlapBox
         var boxBounds = blockGuide.GetComponent<BoxCollider2D>().bounds;
         Vector2 boxCenter = new Vector2(boxBounds.center.x, boxBounds.center.y);
         Vector2 boxSize = new Vector2(boxBounds.size.x, boxBounds.size.y);
         float boxAngle = blockGuide.transform.eulerAngles.z;
         validPlacement &= Physics2D.OverlapBox(boxCenter, boxSize, boxAngle, gridPlaneMask.value) == null;
-        
+
+        //Collider2D[] hit = Physics2D.OverlapBoxAll(boxCenter, boxSize, boxAngle);
+        //foreach (var item in hit)
+        //{
+        //    Debug.Log(item.name);
+        //}
+
         // color blockGuide based on validity ( #B0B0FF60 for valid, #FFB0B060 for invalid)
         blockGuide.GetComponent<Renderer>().material.color = validPlacement ? new Color(0.686f, 0.686f, 1f, 0.38f) : new Color(1f, 0.686f, 0.686f, 0.38f);
-        
+
         // place wall with LMB
         if (Input.GetMouseButtonDown(0) && gridMode && validPlacement)
         {
             GameObject newWall = Instantiate(currentBlockSize == 2 ? turretPrefab : wallPrefab, blockGuide.transform.position, blockGuide.transform.rotation, wallBlockHolder.transform);
-            newWall.GetComponent<SpriteRenderer>().sprite = blockSprites[currentBlockSize];            
+            newWall.GetComponent<SpriteRenderer>().sprite = blockSprites[currentBlockSize];
             // Update collider to match block size
             BoxCollider2D collider = newWall.GetComponent<BoxCollider2D>();
             if (collider != null)
@@ -154,6 +166,7 @@ public class worldGrid : MonoBehaviour
 
             AddBlockToPlaced(clampedGrid, newWall.GetComponent<theWall>());
         }
+
     }
     Vector3 GetMouseWorldPosition(float gridZ = 0f)
     {
@@ -191,7 +204,7 @@ public class worldGrid : MonoBehaviour
     private bool DoesBlockOverlap(Vector2Int gridPos)
     {
         Vector2Int rotatedDims = GetRotatedBlockDimensions();
-        
+
         // Check all cells that this block would occupy
         for (int x = gridPos.x; x < gridPos.x + rotatedDims.x; x++)
         {
@@ -203,11 +216,11 @@ public class worldGrid : MonoBehaviour
         }
         return false;
     }
-    
+
     private void AddBlockToPlaced(Vector2Int gridPos, theWall newWall)
     {
         Vector2Int rotatedDims = GetRotatedBlockDimensions();
-        
+
         for (int x = gridPos.x; x < gridPos.x + rotatedDims.x; x++)
         {
             for (int y = gridPos.y; y < gridPos.y + rotatedDims.y; y++)
