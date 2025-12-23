@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class theWall : MonoBehaviour
 {
-    private int hp = 8;
+    protected int hp = 8;
     private float lastHitTime;
     private const float TIME_BETWEEN_HITS = 0.8f;
     public List<Vector2Int> gridPositions = new List<Vector2Int>();

@@ -1018,7 +1018,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7963908142447156858, guid: a7b0a7b45e1b4e2418a386455936c498, type: 3}
+  m_Sprite: {fileID: 8205695783090892029, guid: 4fef701abf30f414ea3c41b3e670fc10, type: 3}
   m_Color: {r: 0.6949685, g: 0.7202728, b: 1, a: 0.37254903}
   m_FlipX: 0
   m_FlipY: 0
@@ -1448,10 +1448,10 @@ MonoBehaviour:
     m_Bits: 1
   wallPrefab: {fileID: 3767771391817697294, guid: b56014e6669badd4b9475e1431093a44, type: 3}
   blockSprites:
-  - {fileID: 7963908142447156858, guid: a7b0a7b45e1b4e2418a386455936c498, type: 3}
-  - {fileID: 2868539044483428322, guid: 36298f587ba8bb84b9dbf46d0bf5a852, type: 3}
-  - {fileID: 2323917800338813707, guid: ea425fa287eb1f94792c0337ecdfe021, type: 3}
-  - {fileID: 5014170783566631883, guid: 570af724d0e0baf4f9cd03d954ea2c9f, type: 3}
+  - {fileID: 8205695783090892029, guid: 4fef701abf30f414ea3c41b3e670fc10, type: 3}
+  - {fileID: -5669314472355185964, guid: 5a40320e7c6214d48bbf41ae2eea661c, type: 3}
+  - {fileID: 3481495214454511306, guid: f13e3130b3dbd5a4db18dd5b2ab8f811, type: 3}
+  - {fileID: 6173317149602591285, guid: ea3596319ac6fb54e878f45bd29bcb2f, type: 3}
 --- !u!4 &1926736607
 Transform:
   m_ObjectHideFlags: 0

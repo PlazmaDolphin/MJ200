@@ -12,7 +12,7 @@ public class PoliceSpawner : MonoBehaviour
     private float initTime;
     private int day = 0;
     private bool raiding = false;
-    private const int GAME_START_TIME = 600; // Game time starts at 10:00
+    private const int GAME_START_TIME = 480; // Game time starts at 0800
     private const int POLICE_GOT_BORED_TIME = 600; // 06:00
     private const int POLICE_RAID_TIME = 1400; // 14:00
     private const float MINS_PER_SECOND_SCALE = 25f;

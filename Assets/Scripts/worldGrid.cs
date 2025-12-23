@@ -11,7 +11,7 @@ public class worldGrid : MonoBehaviour
     public GameObject gridOverlay, blockGuide;
     public Transform player;
     public LayerMask gridPlaneMask;
-    public GameObject wallPrefab;
+    public GameObject wallPrefab, turretPrefab;
     public Sprite[] blockSprites; // Array of sprites for different block sizes
 
     private GameObject wallBlockHolder;
@@ -127,7 +127,7 @@ public class worldGrid : MonoBehaviour
         // place wall with LMB
         if (Input.GetMouseButtonDown(0) && gridMode && validPlacement)
         {
-            GameObject newWall = Instantiate(wallPrefab, blockGuide.transform.position, blockGuide.transform.rotation, wallBlockHolder.transform);
+            GameObject newWall = Instantiate(currentBlockSize == 2 ? turretPrefab : wallPrefab, blockGuide.transform.position, blockGuide.transform.rotation, wallBlockHolder.transform);
             newWall.GetComponent<SpriteRenderer>().sprite = blockSprites[currentBlockSize];            
             // Update collider to match block size
             BoxCollider2D collider = newWall.GetComponent<BoxCollider2D>();
