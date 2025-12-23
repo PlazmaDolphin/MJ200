@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 public interface IHarvestable
 {
@@ -23,6 +22,9 @@ public class ScrapPile : MonoBehaviour, IHarvestable
     private BoxCollider2D boxCollider;
 
     private Coroutine collectCoroutine;
+
+    [Header("Sound Effects")]
+    [SerializeField] private SoundFXData collectedSound;
 
     // Update is called once per frame
     void Update()
@@ -119,6 +121,7 @@ public class ScrapPile : MonoBehaviour, IHarvestable
         while (true)
         {
             // Collect scrap logic here
+            if (collectedSound) collectedSound.Play();
             CollectScrap();
             Debug.Log("Scrap collected!");
             yield return new WaitForSeconds(harvestTime); // Collect scrap every 3 seconds

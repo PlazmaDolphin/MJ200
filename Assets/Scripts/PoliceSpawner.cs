@@ -27,6 +27,10 @@ public class PoliceSpawner : MonoBehaviourSingleton<PoliceSpawner>
     [SerializeField] private float MinsPerSecondScale = 25f;
     [SerializeField] private float PoliceLineLenght = 20f;
 
+    [Header("Sound Effects")]
+    [SerializeField] private SoundFXData raidStartSound;
+    [SerializeField] private SoundFXData endRaidSound;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -70,10 +74,14 @@ public class PoliceSpawner : MonoBehaviourSingleton<PoliceSpawner>
             GameObject police = Instantiate(policePrefab, new Vector3(x, transform.position.y, transform.position.z), Quaternion.identity);
             policeList.Add(police);
         }
+
+        if (raidStartSound) raidStartSound.Play();
     }
 
     void callOffRaid()
     {
+        if (endRaidSound) endRaidSound.Play();
+
         // TODO: Replace with police heading back to spawn
         foreach (GameObject police in policeList)
         {

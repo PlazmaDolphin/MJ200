@@ -6,15 +6,19 @@ public class Bullet : MonoBehaviour
     private float knockback;
     private int damage;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("Sound Effects")]
+    [SerializeField] private SoundFXData hitSound;
+
     void Start()
     {
         Invoke(nameof(die), 2); // destroy bullet after 2 seconds
     }
-    private void die(){ Destroy(gameObject); }
+    private void die() { Destroy(gameObject); }
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     public void initBullet(Vector2 velocity, int damage, float knockback)
     {
@@ -27,6 +31,9 @@ public class Bullet : MonoBehaviour
         if (collision.CompareTag("police"))
         {
             collision.gameObject.GetComponent<PoliceLogic>().damage(transform.position, knockback, damage);
+
+            if (hitSound) hitSound.Play();
+
             Destroy(gameObject);
         }
     }

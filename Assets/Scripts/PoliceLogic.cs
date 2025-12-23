@@ -11,10 +11,15 @@ public class PoliceLogic : MonoBehaviour
     private int health = 10;
     private bool pursuingWall = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("Sound Effects")]
+    [SerializeField] private SoundFXData hurtSound;
+    [SerializeField] private SoundFXData deathSound;
+
     void Start()
     {
         // force z-position to zero
-        
+
         testPath = new NavMeshPath();
         agent.updateRotation = false;
         agent.updateUpAxis = false;
@@ -149,12 +154,15 @@ public class PoliceLogic : MonoBehaviour
     }
     public void damage(Vector2 hitSource, float knockbackForce, int damageAmount = 1)
     {
+        if (hurtSound) hurtSound.Play();
+
         Vector2 dir = ((Vector2)transform.position - hitSource).normalized;
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
         health -= damageAmount;
         if (health <= 0)
         {
+            if (deathSound) deathSound.Play();
             PoliceSpawner.policeList.Remove(gameObject);
             Destroy(gameObject);
         }

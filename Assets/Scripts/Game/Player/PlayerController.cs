@@ -23,6 +23,14 @@ public class PlayerController : MonoBehaviour
     public int currentHealth;
     [SerializeField] private UnityEvent onLose;
 
+    [Header("Sound Effects")]
+    [SerializeField] private AudioSource buildingAudio;
+    [SerializeField] private SoundFXData collectScrapSound;
+
+    [Space(10f), SerializeField] private SoundFXData hurtSound;
+    [SerializeField] private SoundFXData healSound;
+    [SerializeField] private SoundFXData deathSound;
+
     private void Awake()
     {
         Rb = GetComponent<Rigidbody2D>();
@@ -86,6 +94,8 @@ public class PlayerController : MonoBehaviour
         if (this.isBuilding == isBuilding) return;
         if (isHarvesting) return;
 
+        buildingAudio.gameObject.SetActive(isBuilding);
+
         // Can only move if not building (we can ofcourse change this eaasily)
         Movement.SetCanMove(!isBuilding);
         OnBuildingStateChanged?.Invoke(isBuilding);
@@ -101,16 +111,22 @@ public class PlayerController : MonoBehaviour
 
         if (collision.CompareTag("scrap"))
         {
+            if (collectScrapSound) collectScrapSound.Play();
+
             collision.gameObject.GetComponent<ScrapLogic>().Die();
         }
         if (collision.CompareTag("police"))
         {
+            if (hurtSound) hurtSound.Play();
+
             // Take Damage
             SetCurrentHealth(currentHealth - 1);
             OnHealthChanged?.Invoke(currentHealth);
 
             if (currentHealth <= 0)
             {
+                if (deathSound) deathSound.Play();
+
                 Debug.Log("Game Over");
                 // Implement game over logic here
                 onLose.Invoke();
@@ -123,6 +139,8 @@ public class PlayerController : MonoBehaviour
 
     public void Heal()
     {
+        if (healSound) healSound.Play();
+
         SetCurrentHealth(maxHealth);
     }
 

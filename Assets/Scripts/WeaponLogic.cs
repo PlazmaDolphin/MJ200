@@ -16,6 +16,12 @@ public class WeaponLogic : MonoBehaviour
     private float lastAttack;
     // TODO: Add other weapons than knife
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    [Header("Sound Effects")]
+    [SerializeField] private SoundFXData stabSound;
+    [SerializeField] private SoundFXData gunShootSound;
+    [SerializeField] private SoundFXData grenadeThrowSound;
+
     void Start()
     {
         lastAttack = Time.time - KNIFE_COOLDOWN;
@@ -31,7 +37,7 @@ public class WeaponLogic : MonoBehaviour
     {
         weaponType += typeOffset;
         weaponType %= 3;
-        if(weaponType < 0) weaponType = weaponSprites.Length-1;
+        if (weaponType < 0) weaponType = weaponSprites.Length - 1;
         //set sprite
         weapon.GetComponent<SpriteRenderer>().sprite = weaponSprites[weaponType];
     }
@@ -42,18 +48,25 @@ public class WeaponLogic : MonoBehaviour
             return;
         weapon.GetComponent<Collider2D>().enabled = weaponType == 0; // Only enable collider for knife
         lastAttack = Time.time;
-        if (weaponType == 0){
+        if (weaponType == 0)
+        {
+            if (stabSound) stabSound.Play();
+
             WeaponAnimator.SetTrigger("stab");
             weapon.GetComponent<Collider2D>().enabled = true;
         }
         if (weaponType == 1)
         {
+            if (gunShootSound) gunShootSound.Play();
+
             // Fire bullet
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
             bullet.GetComponent<Bullet>().initBullet(GetNormalizedMouseDirection() * GUN_VEL, GUN_DAMAGE, GUN_KNOCKBACK);
         }
         if (weaponType == 2)
         {
+            if (grenadeThrowSound) grenadeThrowSound.Play();
+
             grenade.StartGrenadeCharge();
         }
         Invoke(nameof(EndAttack), KNIFE_DURATION);

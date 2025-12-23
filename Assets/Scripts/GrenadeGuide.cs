@@ -94,7 +94,8 @@ public class GrenadeGuide : MonoBehaviour
         StartCoroutine(MoveGrenadeAlongArc(grenade.transform, dir, distance, startPos));
     }
     System.Collections.IEnumerator MoveGrenadeAlongArc(
-        Transform grenade, Vector2 dir, float distance, Vector2 startPos) {
+        Transform grenade, Vector2 dir, float distance, Vector2 startPos)
+    {
         float elapsed = 0f;
         Gradient gradient = new Gradient();
         GradientColorKey[] colorKeys = {
@@ -121,7 +122,7 @@ public class GrenadeGuide : MonoBehaviour
         {
             float t = elapsed / travelTime;
             // if grenade was destroyed, stop moving and reset gradient
-            if (grenade == null) 
+            if (grenade == null)
             {
                 line.enabled = false;
                 line.colorGradient = new Gradient();
