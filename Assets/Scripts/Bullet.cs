@@ -21,6 +21,13 @@ public class Bullet : MonoBehaviour
         rb.linearVelocity = velocity;
         this.damage = damage;
         this.knockback = knockback;
+
+        if (rb.linearVelocity.sqrMagnitude > 0.001f)
+        {
+            float angle = Mathf.Atan2(rb.linearVelocity.y, rb.linearVelocity.x) * Mathf.Rad2Deg;
+            transform.rotation = Quaternion.Euler(0, 0, angle);
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {

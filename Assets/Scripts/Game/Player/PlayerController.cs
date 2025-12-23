@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public Action<bool> OnSalvagingStateChanged;
 
     public WeaponLogic weapon;
-
+    public RadialLoader radialLoader;
     public PlayerMovement Movement { get; private set; }
 
     public bool isBuilding, isHarvesting;
@@ -41,21 +41,57 @@ public class PlayerController : MonoBehaviour
             weapon.SwitchWeapon(Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1);
         }
 
+<<<<<<< Updated upstream
         SetIsHarvesting(Keyboard.current.fKey.isPressed);
+=======
+        if (Keyboard.current.fKey.isPressed)
+            SetIsHarvesting(true);
+        else if (Keyboard.current.fKey.wasReleasedThisFrame)
+            SetIsHarvesting(false);
+>>>>>>> Stashed changes
+
+        if (Keyboard.current.rKey.wasPressedThisFrame)
+            weapon.BeginReloadHold();
+
+        if (Keyboard.current.rKey.wasReleasedThisFrame)
+            weapon.CancelReloadHold();
 
     }
 
     private void SetIsHarvesting(bool isHarvesting)
     {
+<<<<<<< Updated upstream
         // Prevent from calling multiple times
         if (this.isHarvesting == isHarvesting) return;
+=======
+        if (isBuilding) return; // Can't harvest while building
+        // If there's no harvestable object anymore, do nothing
+        if (currentHarvestable == null && isHarvesting)
+        {
+            //Stop harvesting if we were harvesting
+            SetIsHarvesting(false);
+            return;
+        }
+>>>>>>> Stashed changes
         // Can only move if not harvesting
         Movement.SetCanMove(!isHarvesting);
         if (isHarvesting)
-            currentHarvestable?.StartHarvesting();
+        {
+            radialLoader.StartLoading(1f); // duration is cosmetisch
+            currentHarvestable.StartHarvesting(
+                p => radialLoader.SetProgress(p)
+            );
+        }
         else
+        {
+            radialLoader.CompleteAndHide();
             currentHarvestable?.StopHarvesting();
+<<<<<<< Updated upstream
         OnSalvagingStateChanged?.Invoke(isBuilding);
+=======
+        }
+        OnSalvagingStateChanged?.Invoke(isHarvesting);
+>>>>>>> Stashed changes
         this.isHarvesting = isHarvesting;
     }
 
