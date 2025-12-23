@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::LevelData
   levelID: Level
   sceneField:
-    m_SceneAsset: {fileID: 102900000, guid: 78374a68e6e60e64fb930e6419840515, type: 3}
-    m_SceneName: Game
+    m_SceneAsset: {fileID: 102900000, guid: 8831338e76efaff499919eb2cf81d753, type: 3}
+    m_SceneName: testScenePoliceOriginal
   isPlayableLevel: 1
