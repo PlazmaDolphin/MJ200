@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6346464897588902427}
   - component: {fileID: 5699538442776037192}
   - component: {fileID: 7560001042727464576}
+  - component: {fileID: 8275781359113187013}
   m_Layer: 5
   m_Name: Base Button
   m_TagString: Untagged
@@ -121,6 +122,79 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8275781359113187013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7075350596816671665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45e606bc068ebe64cbd148ef52a6aa4c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AnimatedButtonUI
+  text: {fileID: 7095357724400771578}
+  background: {fileID: 5699538442776037192}
+  icon: {fileID: 0}
+  clickedSFX: {fileID: 11400000, guid: 287dd6bb203ad3b4c87623c2d0f7e123, type: 2}
+  selectedSFX: {fileID: 0}
+  onlyCallEventOnce: 0
+  onClicked:
+    m_PersistentCalls:
+      m_Calls: []
+  punchScale: 0.2
+  clickDuration: 0.3
+  punchCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  selectedScaleAmount: 1.1
+  selectedDuration: 0.25
+  scaleCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1001 &8425673932673467907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -239,3 +313,14 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1655836574655410351, guid: 849fabb214adb4a48ba117d933674608, type: 3}
   m_PrefabInstance: {fileID: 8425673932673467907}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7095357724400771578 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1628552149136713721, guid: 849fabb214adb4a48ba117d933674608, type: 3}
+  m_PrefabInstance: {fileID: 8425673932673467907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.TextMeshPro::TMPro.TextMeshProUGUI

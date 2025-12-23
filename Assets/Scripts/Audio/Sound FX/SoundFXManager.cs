@@ -7,8 +7,8 @@ public class SoundFXManager : MonoBehaviourSingleton<SoundFXManager>
 {
     [Header("Playing SFX")]
     [SerializeField] AudioSource baseAudioSource;
-    [SerializeField, ReadOnly] private List<AudioSource> audioSourcesReadyList = new();
-    [SerializeField, ReadOnly] private List<AudioSource> audioSourcesActiveList = new();
+    private List<AudioSource> audioSourcesReadyList = new();
+    private List<AudioSource> audioSourcesActiveList = new();
     private const int audioSourcesAmount = 10;
 
     private List<AudioSource> allAudioSources = new List<AudioSource>();

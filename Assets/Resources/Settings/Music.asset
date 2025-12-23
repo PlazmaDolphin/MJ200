@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad2ea364650614d43b12ce981fb763f4, type: 3}
+  m_Name: Music
+  m_EditorClassIdentifier: Assembly-CSharp::AudioVolumeSetting
+  key: music
+  defaultValue: 10
+  currentValue: 10
+  targetValue: 9
+  audioMixer: {fileID: 24100000, guid: 22a04ff0124f0064598ff56c596125bc, type: 2}
+  exposedParameter: musicVolume

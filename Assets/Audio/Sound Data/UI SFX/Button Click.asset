@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbd5eae052c5e354ebef8b3c28323716, type: 3}
+  m_Name: Button Click
+  m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 2761237807491120492, guid: 22a04ff0124f0064598ff56c596125bc, type: 2}
+  clips:
+  - {fileID: 8300000, guid: c6a7417b1d625cc4dbd58719f34496f1, type: 3}
+  - {fileID: 8300000, guid: ec76109434042d2459c80fb81fd122a4, type: 3}
+  - {fileID: 8300000, guid: 48d58a1b8db3950468f9ff3dda289364, type: 3}
+  volume: 1
+  minPitch: 0.9
+  maxPitch: 1

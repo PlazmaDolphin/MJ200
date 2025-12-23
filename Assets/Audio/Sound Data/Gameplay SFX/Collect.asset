@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dbd5eae052c5e354ebef8b3c28323716, type: 3}
-  m_Name: Example
+  m_Name: Collect
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 2761237807491120492, guid: 22a04ff0124f0064598ff56c596125bc, type: 2}
+  mixerGroup: {fileID: 1813623601333187341, guid: 22a04ff0124f0064598ff56c596125bc, type: 2}
   clips:
-  - {fileID: 8300000, guid: c6a7417b1d625cc4dbd58719f34496f1, type: 3}
-  - {fileID: 8300000, guid: ec76109434042d2459c80fb81fd122a4, type: 3}
-  - {fileID: 8300000, guid: 48d58a1b8db3950468f9ff3dda289364, type: 3}
+  - {fileID: 8300000, guid: 4f8600e30b997704390880a85f1cdb7d, type: 3}
+  - {fileID: 8300000, guid: abe3772b9f1918b4081d07f7684b89d7, type: 3}
+  - {fileID: 8300000, guid: dab330bd508cad0489e53c69b534daab, type: 3}
   volume: 1
   minPitch: 0.9
   maxPitch: 1
