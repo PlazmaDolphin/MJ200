@@ -24,10 +24,10 @@ POLICE AI:
 +   Navigate around walls
 +   Update the mesh upon each block placement
 - If no path can be found:
--   [BASIC]: Move in straight line to player, break walls in the way
--     - Give police attack
--     - Give walls a health bar
--     - Walls properly deleted when health = 0
++   [BASIC]: Move in straight line to player, break walls in the way
++     - Give police attack
++     - Give walls a health bar
++     - Walls properly deleted when health = 0
 -   [MEDIUM]: Find minimum number of wall breaks needed to reach player
 -     - Target thinnest part of wall
 -     - Do not reevaluate until target wall is broken
