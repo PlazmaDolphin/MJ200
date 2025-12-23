@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     private float invincibilityTimer = 0f;
     [SerializeField] private UnityEvent onLose;
 
+    [Header("Enemy")]
+    [SerializeField] private float enemyKnockback = 10f;
+
     [Header("Sound Effects")]
     [SerializeField] private RepeatingSFX buildingSound;
     [SerializeField] private SoundFXData collectScrapSound;
@@ -173,7 +176,7 @@ public class PlayerController : MonoBehaviour
 
             //apply knockback
             Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
-            Rb.AddForce(knockbackDirection * 20f, ForceMode2D.Impulse);
+            Rb.AddForce(knockbackDirection * enemyKnockback, ForceMode2D.Impulse);
         }
     }
 

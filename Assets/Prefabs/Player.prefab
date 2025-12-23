@@ -439,7 +439,7 @@ MonoBehaviour:
   weapon: {fileID: 8113634610881975356}
   isBuilding: 0
   isHarvesting: 0
-  maxHealth: 3
+  maxHealth: 5
   currentHealth: 0
   canBeHit: 0
   invinTime: 1
