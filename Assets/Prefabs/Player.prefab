@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2eb801a323744d90f72ccc943796a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  rb: {fileID: 7152446507376511172}
   weapon: {fileID: 8113634610881975356}
   isBuilding: 0
   isHarvesting: 0

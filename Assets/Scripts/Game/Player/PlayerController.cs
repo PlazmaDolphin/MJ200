@@ -10,12 +10,13 @@ public class PlayerController : MonoBehaviour
 
     public Action<bool> OnBuildingStateChanged;
     public Action<bool> OnSalvagingStateChanged;
-
+    public Rigidbody2D rb;
     public WeaponLogic weapon;
 
     public PlayerMovement Movement { get; private set; }
 
     public bool isBuilding, isHarvesting;
+    private int hp = 3;
 
     private void Awake()
     {
@@ -90,6 +91,18 @@ public class PlayerController : MonoBehaviour
         if (collision.CompareTag("scrap"))
         {
             collision.gameObject.GetComponent<ScrapLogic>().Die();
+        }
+        if (collision.CompareTag("police"))
+        {
+            hp--;
+            if (hp <= 0)
+            {
+                Debug.Log("Game Over");
+                // Implement game over logic here
+            }
+            //apply knockback
+            Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
+            rb.AddForce(knockbackDirection * 20f, ForceMode2D.Impulse);
         }
     }
 
