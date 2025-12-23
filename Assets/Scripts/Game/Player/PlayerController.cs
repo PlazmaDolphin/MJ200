@@ -1,13 +1,14 @@
 using System;
 using Unity.Cinemachine;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [DefaultExecutionOrder(-1)]
 public class PlayerController : MonoBehaviour
 {
     private IHarvestable currentHarvestable;
-
+    public UnityEvent onLose;
     public Action<bool> OnBuildingStateChanged;
     public Action<bool> OnSalvagingStateChanged;
     public Rigidbody2D rb;
@@ -99,6 +100,7 @@ public class PlayerController : MonoBehaviour
             {
                 Debug.Log("Game Over");
                 // Implement game over logic here
+                onLose.Invoke();
             }
             //apply knockback
             Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;

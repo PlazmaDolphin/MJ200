@@ -1,11 +1,13 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PoliceSpawner : MonoBehaviour
 {
     public GameObject policePrefab;
     public TextMeshProUGUI timeText;
+    public UnityEvent onWin;
     public static List<GameObject> policeList = new List<GameObject>();
     private float initTime;
     private int day = 0;
@@ -40,6 +42,7 @@ public class PoliceSpawner : MonoBehaviour
         if (day >= 3 && policeList.Count == 0)
         {
             //Trigger win condition
+            onWin.Invoke();
             Debug.Log("You win!");            
         }
     }
