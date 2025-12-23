@@ -312,6 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d2eb801a323744d90f72ccc943796a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  rb: {fileID: 7152446507376511172}
   weapon: {fileID: 8113634610881975356}
   isBuilding: 0
   isHarvesting: 0
@@ -459,9 +460,6 @@ MonoBehaviour:
   walk: {fileID: 7400000, guid: a38f6ae47c2bf384e8c354bf178ecd99, type: 2}
   build: {fileID: 7400000, guid: 9f05bfafa53711f46ae9ada665c327cd, type: 2}
   salvaging: {fileID: 7400000, guid: 8ff6ab5ea95aeea44900c5dac9a6ba64, type: 2}
-  example:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &7876140794074721897
 GameObject:
   m_ObjectHideFlags: 0

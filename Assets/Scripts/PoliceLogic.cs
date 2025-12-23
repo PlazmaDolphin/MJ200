@@ -27,6 +27,7 @@ public class PoliceLogic : MonoBehaviour
         health -= damageAmount;
         if (health <= 0)
         {
+            PoliceSpawner.policeList.Remove(gameObject);
             Destroy(gameObject);
         }
     }
