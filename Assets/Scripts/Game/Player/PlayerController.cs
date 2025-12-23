@@ -85,7 +85,6 @@ public class PlayerController : MonoBehaviour
             if(invincibilityTimer < 0)
                 canBeHit = true;
         }
-
     }
 
     private void SetIsHarvesting(bool isHarvesting)
@@ -113,8 +112,8 @@ public class PlayerController : MonoBehaviour
         {
             radialLoader.CompleteAndHide();
             currentHarvestable?.StopHarvesting();
-            OnSalvagingStateChanged?.Invoke(isHarvesting);
         }
+        OnSalvagingStateChanged?.Invoke(isHarvesting);
         this.isHarvesting = isHarvesting;
     }
 
