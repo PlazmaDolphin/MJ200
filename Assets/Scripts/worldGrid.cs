@@ -32,9 +32,10 @@ public class worldGrid : MonoBehaviour
     private void Start()
     {
         wallBlockHolder = new GameObject("WallBlocks");
+        placedBlocks = new HashSet<Vector2Int>();
     }
 
-    private HashSet<Vector2Int> placedBlocks = new HashSet<Vector2Int>();
+    public static HashSet<Vector2Int> placedBlocks = new HashSet<Vector2Int>();
     public static Vector2Int WorldToGrid(Vector3 world)
     {
         return new Vector2Int(
@@ -150,8 +151,8 @@ public class worldGrid : MonoBehaviour
                 // keep vertical center as-is; zero X/Z offset so obstacle is centered on prefab
                 navObs.center = new Vector3(0f, navObs.center.y, 0f);
             }
-            
-            AddBlockToPlaced(clampedGrid);
+
+            AddBlockToPlaced(clampedGrid, newWall.GetComponent<theWall>());
         }
     }
     Vector3 GetMouseWorldPosition(float gridZ = 0f)
@@ -203,7 +204,7 @@ public class worldGrid : MonoBehaviour
         return false;
     }
     
-    private void AddBlockToPlaced(Vector2Int gridPos)
+    private void AddBlockToPlaced(Vector2Int gridPos, theWall newWall)
     {
         Vector2Int rotatedDims = GetRotatedBlockDimensions();
         
@@ -212,6 +213,7 @@ public class worldGrid : MonoBehaviour
             for (int y = gridPos.y; y < gridPos.y + rotatedDims.y; y++)
             {
                 placedBlocks.Add(new Vector2Int(x, y));
+                newWall.gridPositions.Add(new Vector2Int(x, y));
             }
         }
     }
