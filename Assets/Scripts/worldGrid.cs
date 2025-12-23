@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class worldGrid : MonoBehaviour
 {
@@ -131,8 +132,23 @@ public class worldGrid : MonoBehaviour
             BoxCollider2D collider = newWall.GetComponent<BoxCollider2D>();
             if (collider != null)
             {
+            }
+
+            // If a NavMeshObstacle exists on the prefab, resize it to match the placed block
+            NavMeshObstacle navObs = newWall.GetComponent<NavMeshObstacle>();
+            if (navObs != null)
+            {
                 Vector2Int dims = blockDimensions[currentBlockSize];
                 collider.size = new Vector2(dims.x, dims.y);
+                Vector2Int rotatedDims = GetRotatedBlockDimensions();
+                // keep existing z size (thickness) if any
+                Vector3 obsSize = navObs.size;
+                // Map grid width -> X, grid height -> Z (NavMesh uses XZ plane)
+                obsSize.x = dims.x;
+                obsSize.y = dims.y;
+                navObs.size = obsSize;
+                // keep vertical center as-is; zero X/Z offset so obstacle is centered on prefab
+                navObs.center = new Vector3(0f, navObs.center.y, 0f);
             }
             
             AddBlockToPlaced(clampedGrid);

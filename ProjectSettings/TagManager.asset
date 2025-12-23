@@ -7,6 +7,7 @@ TagManager:
   - scrap
   - police
   - playerWeapon
+  - floor
   layers:
   - Default
   - TransparentFX

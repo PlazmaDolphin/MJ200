@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))] // So it automatically gives a rb to the object in the inspector
 public class PlayerMovement : MonoBehaviour
 {
+    public static Transform playerPos;
     public Rigidbody2D Rb { get; private set; } // Doesn't appears on inspector; Other classes can only read it, not modify;
 
     public Action OnDashed;
@@ -19,11 +20,13 @@ public class PlayerMovement : MonoBehaviour
 
     void Awake()
     {
+        playerPos = transform;
         Rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
+        playerPos = transform;
         if (!canMove)
         {
             moveInput = Vector2.zero;
