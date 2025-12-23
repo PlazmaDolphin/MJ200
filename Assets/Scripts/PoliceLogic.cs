@@ -5,6 +5,7 @@ using UnityEngine.AI;
 public class PoliceLogic : MonoBehaviour
 {
     public Rigidbody2D rb;
+    public SpriteRenderer sprite;
     public NavMeshAgent agent;
     private theWall targetWall;
     private int health = 10;
@@ -75,7 +76,8 @@ public class PoliceLogic : MonoBehaviour
         }
         else ReEvaluate();
     }
-    void ReEvaluate(){
+    void ReEvaluate()
+    {
         NavMeshHit agentHit;
         NavMeshHit playerHit;
 
@@ -103,7 +105,7 @@ public class PoliceLogic : MonoBehaviour
         );
 
         Debug.Log($"Calc={success}, Status={testPath.status}, Corners={testPath.corners.Length}");
-        if (testPath.status == NavMeshPathStatus.PathComplete )
+        if (testPath.status == NavMeshPathStatus.PathComplete)
         {
             // NEVER BECOMES TRUE, EVALUATE
             Debug.Log("Player reachable, pursuing");
@@ -116,14 +118,14 @@ public class PoliceLogic : MonoBehaviour
             if (!pursuingWall) pursueWall();
         }
     }
-    
+
     // Select a wall to attack. Prefer the wall directly between AI and player
     // (raycast); otherwise choose the nearest wall by distance.
     private void pursueWall()
     {
         RaycastHit2D hit;
         hit = Physics2D.Raycast(transform.position, (PlayerMovement.playerPos.position - transform.position).normalized, 100);
-        
+
         // check if the hit is a wall
         if (hit.collider != null && hit.collider.CompareTag("wall"))
         {
@@ -138,6 +140,7 @@ public class PoliceLogic : MonoBehaviour
         // pick nearest wall
         var nearest = walls.OrderBy(w => Vector2.Distance(transform.position, w.transform.position)).First();
         agent.SetDestination(nearest.transform.position);
+        sprite.flipX = nearest.transform.position.x < 0;
         targetWall = nearest.GetComponent<theWall>();
         pursuingWall = true;
     }
