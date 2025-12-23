@@ -460,6 +460,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   policePrefab: {fileID: 8066444699900987703, guid: 64dbdf7edd7656643809398f89a913e8, type: 3}
+  timeText: {fileID: 0}
+  onWin:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &532989885
 Transform:
   m_ObjectHideFlags: 0

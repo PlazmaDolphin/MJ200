@@ -1588,7 +1588,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UIScreen
   controlAlpha: 1
-  activeByDefault: 1
+  activeByDefault: 2
   <IsVisible>k__BackingField: 0
   <IsTransitioning>k__BackingField: 0
   buttonToPressOnBack: {fileID: 0}
