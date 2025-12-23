@@ -7,8 +7,11 @@ using UnityEngine.InputSystem;
 public class WeaponLogic : MonoBehaviour
 {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     public GameObject weapon, bulletPrefab;
 =======
+=======
+>>>>>>> Stashed changes
     public TextMeshProUGUI ammoDisplay;
     public RadialLoader radialLoader;
     public GameObject weapon, bulletPrefab, bulletSpawn;
@@ -67,9 +70,12 @@ public class WeaponLogic : MonoBehaviour
         {
             // Fire bullet
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
             GameObject bullet = Instantiate(bulletPrefab, weapon.transform.position, transform.rotation);
             bullet.GetComponent<Bullet>().initBullet(GetNormalizedMouseDirection() * GUN_VEL, GUN_DAMAGE, GUN_KNOCKBACK);
 =======
+=======
+>>>>>>> Stashed changes
             if (currentAmmo > 0)
             {
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
@@ -77,6 +83,9 @@ public class WeaponLogic : MonoBehaviour
                 currentAmmo--;
                 ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
             }
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
         }
         if (weaponType == 2)

@@ -85,7 +85,10 @@ Rigidbody2D:
   m_CollisionDetection: 0
   m_Constraints: 3
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!114 &3423605966188544392
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,7 +438,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
   onLose:
     m_PersistentCalls:
       m_Calls: []
@@ -458,8 +464,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   moveSpeed: 5
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!114 &1336274417151472120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,6 +558,9 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &5506902718003594365
 GameObject:
@@ -863,6 +875,9 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
 --- !u!1 &7876140794074721897
 GameObject:
@@ -1063,6 +1078,9 @@ Transform:
   m_Children:
   - {fileID: 1025196101990623391}
   - {fileID: 1008018321704451236}
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   m_Father: {fileID: 3368693151895845036}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

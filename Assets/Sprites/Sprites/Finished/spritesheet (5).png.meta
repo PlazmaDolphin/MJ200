@@ -1,14 +1,13 @@
 fileFormatVersion: 2
-guid: 10f4578c37fd0274182c0c32367dca76
+guid: 4f99c34abe4143b40a16307eae1c9d48
 TextureImporter:
-<<<<<<< Updated upstream:Assets/Sprites/Sprites/SmallPile.png.meta
   internalIDToNameTable:
   - first:
-      213: -1859320928724270277
-    second: SmallPile_0
-=======
-  internalIDToNameTable: []
->>>>>>> Stashed changes:Assets/Sprites/Sprites/Finished/spritesheet (5).png.meta
+      213: 1520261563347401811
+    second: spritesheet (5)_0
+  - first:
+      213: -7553518674739246596
+    second: spritesheet (5)_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -55,7 +54,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 256
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,35 +101,6 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 4
     buildTarget: WebGL
-<<<<<<< Updated upstream:Assets/Sprites/Sprites/SmallPile.png.meta
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WindowsStoreApps
-=======
->>>>>>> Stashed changes:Assets/Sprites/Sprites/Finished/spritesheet (5).png.meta
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -146,34 +116,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: SmallPile_0
+      name: spritesheet (5)_0
       rect:
         serializedVersion: 2
-<<<<<<< Updated upstream:Assets/Sprites/Sprites/SmallPile.png.meta
-        x: 0
-        y: 0
-        width: 256
-        height: 256
-=======
-        x: 94
-        y: 225
-        width: 533
-        height: 260
->>>>>>> Stashed changes:Assets/Sprites/Sprites/Finished/spritesheet (5).png.meta
+        x: 92
+        y: 223
+        width: 537
+        height: 264
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-<<<<<<< Updated upstream:Assets/Sprites/Sprites/SmallPile.png.meta
-      spriteID: b33c0f7677d5236e0800000000000000
-      internalID: -1859320928724270277
-=======
-      spriteID: de9d27f0b7713804bbd76cdf16ecd7ae
-      internalID: 178574044
+      spriteID: 35c700156dd091510800000000000000
+      internalID: 1520261563347401811
       vertices: []
       indices: 
       edges: []
@@ -182,21 +141,20 @@ TextureImporter:
       name: spritesheet (5)_1
       rect:
         serializedVersion: 2
-        x: 694
-        y: 231
-        width: 523
-        height: 252
+        x: 692
+        y: 230
+        width: 526
+        height: 255
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 14f95ac95d982484aa3016dd97b9a5e5
-      internalID: -1713483501
->>>>>>> Stashed changes:Assets/Sprites/Sprites/Finished/spritesheet (5).png.meta
+      spriteID: cf943eb19c28c2790800000000000000
+      internalID: -7553518674739246596
       vertices: []
       indices: 
       edges: []
@@ -205,7 +163,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 529a009c2dd991740a20a55e4f099983
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -213,16 +171,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     spriteCustomMetadata:
-      entries:
-      - key: SpriteEditor.SliceSettings
-        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+      entries: []
     nameFileIdTable:
-<<<<<<< Updated upstream:Assets/Sprites/Sprites/SmallPile.png.meta
-      SmallPile_0: -1859320928724270277
-=======
-      spritesheet (5)_0: 178574044
-      spritesheet (5)_1: -1713483501
->>>>>>> Stashed changes:Assets/Sprites/Sprites/Finished/spritesheet (5).png.meta
+      spritesheet (5)_0: 1520261563347401811
+      spritesheet (5)_1: -7553518674739246596
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
