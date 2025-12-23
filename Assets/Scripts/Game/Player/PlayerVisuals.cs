@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -45,7 +44,7 @@ public class PlayerVisuals : MonoBehaviour
     {
         this.isSalvaging = isSalvaging;
 
-        if(isSalvaging)
+        if (isSalvaging)
         {
             animator.Play(salvaging.name);
         }
@@ -77,7 +76,7 @@ public class PlayerVisuals : MonoBehaviour
         if (moveInput.magnitude > 0.1f)
         {
             animator.Play(walk.name);
-            
+
         }
         else
         {
