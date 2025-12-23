@@ -10,7 +10,10 @@ public class PoliceLogic : MonoBehaviour
     private theWall targetWall;
     private int health = 10;
     private bool pursuingWall = false;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    public bool canBeHit;
+    public float invilTime = 0.1f;
+    private float invincibilityTimer = 0f;
 
     [Header("Sound Effects")]
     [SerializeField] private SoundFXData hurtSound;
@@ -18,6 +21,8 @@ public class PoliceLogic : MonoBehaviour
 
     void Start()
     {
+        invincibilityTimer = invilTime;
+
         // force z-position to zero
 
         testPath = new NavMeshPath();
@@ -83,6 +88,13 @@ public class PoliceLogic : MonoBehaviour
             }
         }
         else ReEvaluate();
+
+        if (!canBeHit)
+        {
+            invincibilityTimer -= Time.deltaTime;
+            if (invincibilityTimer < 0)
+                canBeHit = true;
+        }
     }
     void ReEvaluate()
     {
@@ -154,12 +166,17 @@ public class PoliceLogic : MonoBehaviour
     }
     public void damage(Vector2 hitSource, float knockbackForce, int damageAmount = 1)
     {
+        if (!canBeHit) return;
         if (hurtSound) hurtSound.Play();
 
         Vector2 dir = ((Vector2)transform.position - hitSource).normalized;
         rb.linearVelocity = Vector2.zero;
         rb.AddForce(dir * knockbackForce, ForceMode2D.Impulse);
         health -= damageAmount;
+
+        canBeHit = false;
+        invincibilityTimer = invilTime;
+
         if (health <= 0)
         {
             if (deathSound) deathSound.Play();

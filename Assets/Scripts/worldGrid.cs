@@ -34,6 +34,7 @@ public class worldGrid : MonoBehaviour
 
     private void Start()
     {
+        gridMode = false;
         wallBlockHolder = new GameObject("WallBlocks");
         placedBlocks = new HashSet<Vector2Int>();
     }
@@ -74,6 +75,7 @@ public class worldGrid : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!GameStateManager.CanPlay()) return;
         //toggle grid on/off with E key
         if (Input.GetKeyDown(KeyCode.E))
         {
@@ -136,7 +138,7 @@ public class worldGrid : MonoBehaviour
         //}
 
         // color blockGuide based on validity ( #B0B0FF60 for valid, #FFB0B060 for invalid)
-        blockGuide.GetComponent<Renderer>().material.color = validPlacement ? new Color(0.686f, 0.686f, 1f, 0.38f) : new Color(1f, 0.686f, 0.686f, 0.38f);
+        blockGuide.GetComponent<Renderer>().material.color = validPlacement ? new Color(0.686f, 0.686f, 1f, 0.5f) : new Color(1f, 0.686f, 0.686f, 0.5f);
 
         // place wall with LMB
         if (Input.GetMouseButtonDown(0) && gridMode && validPlacement)

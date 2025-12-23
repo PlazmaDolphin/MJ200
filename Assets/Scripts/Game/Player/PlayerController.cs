@@ -23,6 +23,9 @@ public class PlayerController : MonoBehaviour
     [Header("Health")]
     public int maxHealth = 3;
     public int currentHealth;
+    public bool canBeHit;
+    public float invinTime = 1f;
+    private float invincibilityTimer = 0f;
     [SerializeField] private UnityEvent onLose;
 
     [Header("Sound Effects")]
@@ -42,10 +45,12 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         currentHealth = maxHealth;
+        invincibilityTimer = invinTime;
     }
 
     private void Update()
     {
+        if (!GameStateManager.CanPlay()) return;
         // Replace this with the actual key we want for building
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
@@ -73,6 +78,13 @@ public class PlayerController : MonoBehaviour
 
         if (Keyboard.current.rKey.wasReleasedThisFrame)
             weapon.CancelReloadHold();
+
+        if(!canBeHit)
+        {
+            invincibilityTimer -= Time.deltaTime;
+            if(invincibilityTimer < 0)
+                canBeHit = true;
+        }
 
     }
 
@@ -136,11 +148,15 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.CompareTag("police"))
         {
+            if (!canBeHit) return;
+
             if (hurtSound) hurtSound.Play();
 
             // Take Damage
             SetCurrentHealth(currentHealth - 1);
             OnHealthChanged?.Invoke(currentHealth);
+            canBeHit = false;
+            invincibilityTimer = invinTime;
 
             if (currentHealth <= 0)
             {
