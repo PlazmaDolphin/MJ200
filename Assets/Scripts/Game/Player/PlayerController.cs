@@ -1,5 +1,4 @@
 using System;
-using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
@@ -7,21 +6,32 @@ using UnityEngine.InputSystem;
 [DefaultExecutionOrder(-1)]
 public class PlayerController : MonoBehaviour
 {
-    private IHarvestable currentHarvestable;
-    public UnityEvent onLose;
+    public Action<int> OnHealthChanged;
     public Action<bool> OnBuildingStateChanged;
     public Action<bool> OnSalvagingStateChanged;
-    public Rigidbody2D rb;
-    public WeaponLogic weapon;
 
+    public Rigidbody2D Rb { get; private set; }
     public PlayerMovement Movement { get; private set; }
 
+    [Header("Weapons")]
+    private IHarvestable currentHarvestable;
+    public WeaponLogic weapon;
     public bool isBuilding, isHarvesting;
-    private int hp = 3;
+
+    [Header("Health")]
+    public int maxHealth = 3;
+    public int currentHealth;
+    [SerializeField] private UnityEvent onLose;
 
     private void Awake()
     {
+        Rb = GetComponent<Rigidbody2D>();
         Movement = GetComponent<PlayerMovement>();
+    }
+
+    private void Start()
+    {
+        currentHealth = maxHealth;
     }
 
     private void Update()
@@ -43,16 +53,16 @@ public class PlayerController : MonoBehaviour
             weapon.SwitchWeapon(Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1);
         }
 
-        if(Keyboard.current.fKey.isPressed)
+        if (Keyboard.current.fKey.isPressed)
             SetIsHarvesting(true);
-        else if(Keyboard.current.fKey.wasReleasedThisFrame)
+        else if (Keyboard.current.fKey.wasReleasedThisFrame)
             SetIsHarvesting(false);
 
     }
 
     private void SetIsHarvesting(bool isHarvesting)
     {
-        if(isBuilding) return; // Can't harvest while building
+        if (isBuilding) return; // Can't harvest while building
         // If there's no harvestable object anymore, do nothing
         if (currentHarvestable == null && isHarvesting)
         {
@@ -95,8 +105,11 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.CompareTag("police"))
         {
-            hp--;
-            if (hp <= 0)
+            // Take Damage
+            SetCurrentHealth(currentHealth - 1);
+            OnHealthChanged?.Invoke(currentHealth);
+
+            if (currentHealth <= 0)
             {
                 Debug.Log("Game Over");
                 // Implement game over logic here
@@ -104,8 +117,19 @@ public class PlayerController : MonoBehaviour
             }
             //apply knockback
             Vector2 knockbackDirection = (transform.position - collision.transform.position).normalized;
-            rb.AddForce(knockbackDirection * 20f, ForceMode2D.Impulse);
+            Rb.AddForce(knockbackDirection * 20f, ForceMode2D.Impulse);
         }
+    }
+
+    public void Heal()
+    {
+        SetCurrentHealth(maxHealth);
+    }
+
+    public void SetCurrentHealth(int amount)
+    {
+        currentHealth = amount;
+        OnHealthChanged?.Invoke(amount);
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -113,6 +137,4 @@ public class PlayerController : MonoBehaviour
         if (collision.TryGetComponent(out IHarvestable harvestable) && harvestable == currentHarvestable)
             currentHarvestable = null;
     }
-
-    
 }

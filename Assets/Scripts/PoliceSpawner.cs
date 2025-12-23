@@ -1,22 +1,32 @@
+using System;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class PoliceSpawner : MonoBehaviour
+public class PoliceSpawner : MonoBehaviourSingleton<PoliceSpawner>
 {
+    public Action<int> OnDayChanged;
+    public Action<bool> OnRaidingStateChanged;
+
+    [Header("Police Spawning")]
     public GameObject policePrefab;
-    public TextMeshProUGUI timeText;
-    public UnityEvent onWin;
     public static List<GameObject> policeList = new List<GameObject>();
+    private bool raiding = false;
+    public bool IsRaiding => raiding;
+
+    [Header("Time")]
     private float initTime;
     private int day = 0;
-    private bool raiding = false;
-    private const int GAME_START_TIME = 480; // Game time starts at 0800
-    private const int POLICE_GOT_BORED_TIME = 600; // 06:00
-    private const int POLICE_RAID_TIME = 1400; // 14:00
-    private const float MINS_PER_SECOND_SCALE = 25f;
-    private const float POLICE_LINE_LENGTH = 20f;
+    public UnityEvent onWin;
+    public int CurrentDay => day;
+
+    [Header("Settings")]
+    [SerializeField] private int GameStartTime = 600; // Game time starts at 10:00
+    [SerializeField] private int PoliceGetBoredTime = 600; // 06:00
+    [SerializeField] private int PoliceRaidTime = 1400; // 14:00
+    [SerializeField] private float MinsPerSecondScale = 25f;
+    [SerializeField] private float PoliceLineLenght = 20f;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,24 +36,27 @@ public class PoliceSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        timeText.text = "Time: " + GetIngameMilTime().ToString() + "\nDay: " + day.ToString();
-        if (GetIngameMilTime() >= POLICE_RAID_TIME && !raiding)
+        if (GetIngameMilTime() >= PoliceRaidTime && !raiding)
         {
             day++;
+            OnDayChanged?.Invoke(day);
+
             spawnPoliceRaid();
             raiding = true;
+            OnRaidingStateChanged?.Invoke(true);
         }
         // call off raid at next day's wakeup time
-        if (GetIngameMilTime() >= POLICE_GOT_BORED_TIME && GetIngameMilTime() < POLICE_RAID_TIME && raiding)
+        if (GetIngameMilTime() >= PoliceGetBoredTime && GetIngameMilTime() < PoliceRaidTime && raiding)
         {
             callOffRaid();
             raiding = false;
+            OnRaidingStateChanged?.Invoke(false);
         }
         if (day >= 3 && policeList.Count == 0)
         {
             //Trigger win condition
             onWin.Invoke();
-            Debug.Log("You win!");            
+            Debug.Log("You win!");
         }
     }
 
@@ -53,7 +66,7 @@ public class PoliceSpawner : MonoBehaviour
         int numPolice = 3 + (day - 1) * 2;
         for (int i = 0; i < numPolice; i++)
         {
-            float x = transform.position.x - POLICE_LINE_LENGTH / 2 + i * POLICE_LINE_LENGTH / (numPolice - 1);
+            float x = transform.position.x - PoliceLineLenght / 2 + i * PoliceLineLenght / (numPolice - 1);
             GameObject police = Instantiate(policePrefab, new Vector3(x, transform.position.y, transform.position.z), Quaternion.identity);
             policeList.Add(police);
         }
@@ -69,14 +82,33 @@ public class PoliceSpawner : MonoBehaviour
         policeList.Clear();
     }
 
-    private int GetIngameMilTime()
+    public int GetIngameMilTime()
     {
         // Calculate the time displayed on the clock as a 24-hour 4-digit int
-        int currentTime = (int)((Time.time - initTime) * MINS_PER_SECOND_SCALE);
-        currentTime += GAME_START_TIME;
+        int currentTime = (int)((Time.time - initTime) * MinsPerSecondScale);
+        currentTime += GameStartTime;
         currentTime %= 1440;
         // format as hhmm
-        currentTime = 100*(currentTime/60) + currentTime % 60;
+        currentTime = 100 * (currentTime / 60) + currentTime % 60;
         return currentTime;
+    }
+
+    public float GetDayProgress01()
+    {
+        int time = GetIngameMilTime();
+
+        int startMinutes = GameStartTime;
+        int endMinutes = PoliceGetBoredTime;
+
+        int currentMinutes =
+            (time / 100) * 60 + (time % 100);
+
+        if (currentMinutes < startMinutes)
+            currentMinutes += 1440;
+
+        float dayLength = endMinutes - startMinutes;
+        float elapsed = currentMinutes - startMinutes;
+
+        return Mathf.Clamp01(elapsed / dayLength);
     }
 }

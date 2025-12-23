@@ -46,11 +46,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f2b59e4fc3e32d49b0a3660b86163ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  autoname: 0
   policePrefab: {fileID: 8066444699900987703, guid: 64dbdf7edd7656643809398f89a913e8, type: 3}
-  timeText: {fileID: 0}
   onWin:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: fece361ccac67184e8808818bdf663e1, type: 2}
+        m_TargetAssemblyTypeName: GameState, Assembly-CSharp
+        m_MethodName: SetManagerGameState
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  GameStartTime: 600
+  PoliceGetBoredTime: 600
+  PoliceRaidTime: 1400
+  MinsPerSecondScale: 25
+  PoliceLineLenght: 20
 --- !u!212 &9111211351827969084
 SpriteRenderer:
   serializedVersion: 2

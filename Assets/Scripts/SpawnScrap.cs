@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class SpawnScrap : MonoBehaviour
 {
@@ -14,7 +12,6 @@ public class SpawnScrap : MonoBehaviour
     private const int MAX_SPAWN_ATTEMPTS = 10;
     public GameObject scrapPrefab;
     public AnimationCurve spawnBiasX, spawnBiasY;
-    public TextMeshProUGUI globalScrapCountText;
 
     //(CA) Note: The spawning is really unoptimized. I can improve it later if you want. The brute force spawning and checking all other objects for distances scales really poorly.
     //Fine for now since the scrap limit is low.
@@ -52,8 +49,9 @@ public class SpawnScrap : MonoBehaviour
                 }
                 if (!tooClose) break;
             }
-            if (tooClose){
-                Debug.Log("Spawn failed, position: " + newPos);   
+            if (tooClose)
+            {
+                Debug.Log("Spawn failed, position: " + newPos);
                 continue;
             }
             GameObject newScrap = Instantiate(scrapPrefab, newPos, Quaternion.identity);

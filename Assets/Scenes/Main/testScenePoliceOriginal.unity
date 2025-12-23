@@ -1409,7 +1409,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  globalScrapCountText: {fileID: 79394108}
   scrapRoot: {fileID: 0}
 --- !u!1 &1926736605
 GameObject:
@@ -1447,7 +1446,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1
   wallPrefab: {fileID: 3767771391817697294, guid: b56014e6669badd4b9475e1431093a44, type: 3}
-  turretPrefab: {fileID: 3767771391817697294, guid: 114d7d56e444bab499c592bb286d2e4e, type: 3}
+  turretPrefab: {fileID: 0}
   blockSprites:
   - {fileID: 8205695783090892029, guid: 4fef701abf30f414ea3c41b3e670fc10, type: 3}
   - {fileID: -5669314472355185964, guid: 5a40320e7c6214d48bbf41ae2eea661c, type: 3}
@@ -2198,38 +2197,6 @@ PrefabInstance:
     - target: {fileID: 4196329514596595654, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: timeText
-      value: 
-      objectReference: {fileID: 903041901}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 11400000, guid: fece361ccac67184e8808818bdf663e1, type: 2}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: SetManagerGameState
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: GameState, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 8614210555261916716, guid: 16f46967f1b3c8245ada70b271d57761, type: 3}
-      propertyPath: onWin.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
