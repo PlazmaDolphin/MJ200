@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4805167185567201518}
   - component: {fileID: 498770598712842930}
   - component: {fileID: 3546046078371632926}
-  - component: {fileID: 277335575473992831}
   - component: {fileID: 735148804155836750}
   m_Layer: 5
   m_Name: UI Screen
@@ -105,23 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 276aaab6b443a14439a2d8d237f461b7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &277335575473992831
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4363515401532881800}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 689d3f70fa790e4429f3d6987867e8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  screenController: {fileID: 735148804155836750}
-  selectablesList: []
-  firstSelected: {fileID: 0}
-  selectedSFX: {fileID: 0}
-  ignoreFirstSelectedSFX: 1
 --- !u!114 &735148804155836750
 MonoBehaviour:
   m_ObjectHideFlags: 0
