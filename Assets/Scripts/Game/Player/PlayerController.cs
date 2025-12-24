@@ -57,31 +57,32 @@ public class PlayerController : MonoBehaviour
         if (!GameStateManager.CanPlay()) return;
 
         // Replace this with the actual key we want for building
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if ((Input.GetKeyDown(KeyCode.E) || Input.GetKeyDown(KeyCode.X) || (Input.GetMouseButtonDown(1))) && !isHarvesting)
         {
+            worldGrid.Instance.ToggleGrid();
             SetIsBuilding(!isBuilding);
         }
 
-        if (Input.GetMouseButtonDown(0) && !worldGrid.Instance.gridMode)
+        if ((Input.GetMouseButtonDown(0) || Input.GetKeyDown(KeyCode.Z)) && !isHarvesting && !worldGrid.Instance.gridMode)
         {
             weapon.UseWeapon();
         }
         //scrapText.text = "Scrap: " + InventoryManager.Instance.ScrapCount;
         // scroll wheel to change weapon if not in grid mode
-        if (Input.GetAxis("Mouse ScrollWheel") != 0 && !worldGrid.Instance.gridMode)
+        if (Input.GetAxis("Mouse ScrollWheel") != 0 && !worldGrid.Instance.gridMode && !isHarvesting)
         {
             weapon.SwitchWeapon(Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1);
         }
 
-        if (Keyboard.current.fKey.isPressed)
+        if (Keyboard.current.fKey.isPressed || Keyboard.current.spaceKey.isPressed)
             SetIsHarvesting(true);
-        else if (Keyboard.current.fKey.wasReleasedThisFrame)
+        else if (Keyboard.current.fKey.wasReleasedThisFrame || Keyboard.current.spaceKey.wasReleasedThisFrame)
             SetIsHarvesting(false);
 
-        if (Keyboard.current.rKey.wasPressedThisFrame)
+        if (Keyboard.current.rKey.wasPressedThisFrame || Keyboard.current.cKey.wasPressedThisFrame)
             weapon.BeginReloadHold();
 
-        if (Keyboard.current.rKey.wasReleasedThisFrame)
+        if (Keyboard.current.rKey.wasReleasedThisFrame || Keyboard.current.cKey.wasReleasedThisFrame)
             weapon.CancelReloadHold();
 
         if (!canBeHit)
@@ -95,8 +96,8 @@ public class PlayerController : MonoBehaviour
     private void SetIsHarvesting(bool isHarvesting)
     {
         if (this.isHarvesting == isHarvesting) return;
-
         if (isBuilding) return; // Can't harvest while building
+
         // If there's no harvestable object anymore, do nothing
         if (currentHarvestable == null && isHarvesting)
         {
@@ -140,7 +141,6 @@ public class PlayerController : MonoBehaviour
         this.isBuilding = isBuilding;
     }
 
-
     //Whenever we enter a harvestable object's collider, we set it as the current harvestable
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -161,7 +161,6 @@ public class PlayerController : MonoBehaviour
             SetCurrentHealth(currentHealth - 1);
             OnHealthChanged?.Invoke(currentHealth);
             canBeHit = false;
-            onHitted?.Invoke();
             invincibilityTimer = invinTime;
 
             if (currentHealth <= 0)
@@ -175,6 +174,7 @@ public class PlayerController : MonoBehaviour
             else
             {
                 if (hurtSound) hurtSound.Play();
+                onHitted?.Invoke();
             }
 
             //apply knockback

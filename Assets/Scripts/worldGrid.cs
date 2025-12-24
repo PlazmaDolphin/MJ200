@@ -73,22 +73,16 @@ public class worldGrid : MonoBehaviourSingleton<worldGrid>
     void Update()
     {
         if (!GameStateManager.CanPlay()) return;
-        //toggle grid on/off with E key
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            gridOverlay.SetActive(!gridOverlay.activeSelf);
-            gridMode = !gridMode;
-            blockGuide.SetActive(gridMode);
-        }
-        // rotate blockGuide with R key
-        if (gridMode && Input.GetKeyDown(KeyCode.R))
-        {
-            // if shift held, rotate counterclockwise
-            if (Input.GetKey(KeyCode.LeftShift))
-                currentDirection = (Direction)(((int)currentDirection - 1 + 4) % 4);
-            else
-                currentDirection = (Direction)(((int)currentDirection + 1) % 4);
-        }
+
+        //// rotate blockGuide with R key
+        //if (gridMode && Input.GetKeyDown(KeyCode.R))
+        //{
+        //    // if shift held, rotate counterclockwise
+        //    if (Input.GetKey(KeyCode.LeftShift))
+        //        currentDirection = (Direction)(((int)currentDirection - 1 + 4) % 4);
+        //    else
+        //        currentDirection = (Direction)(((int)currentDirection + 1) % 4);
+        //}
 
         if (gridMode)
         {
@@ -179,6 +173,13 @@ public class worldGrid : MonoBehaviourSingleton<worldGrid>
             }
         }
 
+    }
+
+    public void ToggleGrid()
+    {
+        gridOverlay.SetActive(!gridOverlay.activeSelf);
+        gridMode = !gridMode;
+        blockGuide.SetActive(gridMode);
     }
 
     private bool CanPayForBlock()

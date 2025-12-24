@@ -21,9 +21,9 @@ public class CameraFXData : ScriptableObject
     public AnimationCurve freezeReturnCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
     public float freezeReturnDuration = 0.3f;
 
-    public void Play()
+    public void Play(Transform sender = null)
     {
-        CameraManager.Instance.ShakeFX.Shake(this);
+        CameraManager.Instance.ShakeFX.Shake(this, sender);
         CameraManager.Instance.FreezeFX.Freeze(this);
         //InputManager.Instance.Rumble(this);
     }

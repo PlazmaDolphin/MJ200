@@ -6,11 +6,9 @@ using UnityEngine.InputSystem;
 public class WeaponLogic : MonoBehaviour
 {
     public RadialLoader radialLoader;
-    public TextMeshProUGUI ammoDisplay;
     public GameObject weapon, bulletPrefab, bulletSpawn;
     public Animator WeaponAnimator;
     public Sprite[] weaponSprites;
-    public GrenadeGuide grenade;
     private int weaponType = 0; // 0: knife, 1: gun, 2: grenade.
 
     [Header("Knife")]
@@ -18,6 +16,8 @@ public class WeaponLogic : MonoBehaviour
     [SerializeField] private float KNIFE_COOLDOWN = 0.2f;
     [SerializeField] private float KNIFE_KNOCKBACK = 15f;
     [SerializeField] private int KNIFE_DAMAGE = 1;
+    [SerializeField] private SoundFXData stabSound;
+    [SerializeField] private CameraFXData knifeStabFX;
 
     [Header("Gun")]
     [SerializeField] private float GUN_VEL = 10f;
@@ -27,17 +27,17 @@ public class WeaponLogic : MonoBehaviour
     [SerializeField] private float lastAttack;
     [SerializeField] private int ammoClipSize = 6;
     [SerializeField] private GameObject noAmmoIcon;
+    [SerializeField] private SoundFXData gunShootSound;
+    [SerializeField] private CameraFXData gunShootFX;
+    public TextMeshProUGUI ammoDisplay;
     private int currentAmmo;
     private Coroutine reloadRoutine;
     private bool isReloading;
 
     [Header("Grenade")]
     [SerializeField] private float GRENADE_COOLDOWN = 2f;
-
-    [Header("Sound Effects")]
-    [SerializeField] private SoundFXData stabSound;
-    [SerializeField] private SoundFXData gunShootSound;
     [SerializeField] private SoundFXData grenadeThrowSound;
+    public GrenadeGuide grenade;
 
     void Start()
     {
@@ -45,7 +45,7 @@ public class WeaponLogic : MonoBehaviour
         SwitchWeapon(weaponType);
         currentAmmo = ammoClipSize;
         ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
-        noAmmoIcon.gameObject.SetActive(currentAmmo > 0);
+        noAmmoIcon.gameObject.SetActive(currentAmmo == 0);
     }
 
     // Update is called once per frame
@@ -71,6 +71,7 @@ public class WeaponLogic : MonoBehaviour
         if (weaponType == 0)
         {
             if (stabSound) stabSound.Play();
+            if (knifeStabFX) knifeStabFX.Play();
 
             WeaponAnimator.SetTrigger("stab");
             weapon.GetComponent<Collider2D>().enabled = true;
@@ -80,12 +81,14 @@ public class WeaponLogic : MonoBehaviour
             if (currentAmmo > 0)
             {
                 if (gunShootSound) gunShootSound.Play();
+                if (gunShootFX) gunShootFX.Play();
+
                 // Fire bullet
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawn.transform.position, transform.rotation);
                 bullet.GetComponent<Bullet>().initBullet(GetNormalizedMouseDirection() * GUN_VEL, GUN_DAMAGE, GUN_KNOCKBACK);
                 currentAmmo--;
                 ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
-                noAmmoIcon.gameObject.SetActive(currentAmmo > 0);
+                noAmmoIcon.gameObject.SetActive(currentAmmo == 0);
             }
         }
         if (weaponType == 2)

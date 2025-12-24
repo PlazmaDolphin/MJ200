@@ -26,13 +26,13 @@ public class CameraShakeFX
         #region NULL CHECKS
         if (shakeStrenght == null)
         {
-            Debug.LogError("No shakeStrenght!");
+            //Debug.LogError("No shakeStrenght!");
             return;
         }
 
         if (baseImpulseSource == null)
         {
-            Debug.LogError("No CinemachineImpulseSource found in CameraManager children!");
+            //Debug.LogError("No CinemachineImpulseSource found in CameraManager children!");
             return;
         }
         #endregion
@@ -66,7 +66,7 @@ public class CameraShakeFX
 
         // Instantiate impulse source
         CinemachineImpulseSource newImpulseSource = GetAvailableImpulseSource(senderTransform);
-        newImpulseSource.gameObject.name = $"{baseImpulseSource.gameObject.name} ({senderTransform.name})";
+        newImpulseSource.gameObject.name = $"{baseImpulseSource.gameObject.name} ({(senderTransform ? senderTransform.name : string.Empty)})";
 
         // Coroutine to apply repeated impulses during the shake duration
         manager.StartCoroutine(ApplyRepeatedImpulses(newImpulseSource, cameraShakeData));

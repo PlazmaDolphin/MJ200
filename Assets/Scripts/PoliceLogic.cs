@@ -95,6 +95,8 @@ public class PoliceLogic : MonoBehaviour
             if (invincibilityTimer < 0)
                 canBeHit = true;
         }
+
+        UpdateFacing();
     }
     void ReEvaluate()
     {
@@ -124,11 +126,11 @@ public class PoliceLogic : MonoBehaviour
             testPath
         );
 
-        Debug.Log($"Calc={success}, Status={testPath.status}, Corners={testPath.corners.Length}");
+        //Debug.Log($"Calc={success}, Status={testPath.status}, Corners={testPath.corners.Length}");
         if (testPath.status == NavMeshPathStatus.PathComplete)
         {
             // NEVER BECOMES TRUE, EVALUATE
-            Debug.Log("Player reachable, pursuing");
+            //Debug.Log("Player reachable, pursuing");
             pursuingWall = false;
             targetWall = null;
             agent.SetDestination(PlayerMovement.playerPos.position);
@@ -160,7 +162,6 @@ public class PoliceLogic : MonoBehaviour
         // pick nearest wall
         var nearest = walls.OrderBy(w => Vector2.Distance(transform.position, w.transform.position)).First();
         agent.SetDestination(nearest.transform.position);
-        sprite.flipX = nearest.transform.position.x < 0;
         targetWall = nearest.GetComponent<theWall>();
         pursuingWall = true;
     }
@@ -183,5 +184,15 @@ public class PoliceLogic : MonoBehaviour
             PoliceSpawner.policeList.Remove(gameObject);
             Destroy(gameObject);
         }
+    }
+
+    void UpdateFacing()
+    {
+        float xVel = agent.velocity.x;
+
+        if (Mathf.Abs(xVel) < 0.01f)
+            return;
+
+        sprite.flipX = xVel < 0f;
     }
 }

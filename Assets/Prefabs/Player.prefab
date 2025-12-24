@@ -48,7 +48,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   radialLoader: {fileID: 1282152258693824002}
-  ammoDisplay: {fileID: 0}
   weapon: {fileID: 7877205967074137450}
   bulletPrefab: {fileID: 3059875712051893661, guid: b6b46d66359b3fd4388cee588543d2b9, type: 3}
   bulletSpawn: {fileID: 780282707979530999}
@@ -57,11 +56,12 @@ MonoBehaviour:
   - {fileID: -1958604787678368536, guid: 4049516ec2d800143adc1eed6546bb89, type: 3}
   - {fileID: -4670347095062736498, guid: e6024c81c598bd844b291096edd31fa9, type: 3}
   - {fileID: 6152968205191035900, guid: a2434c3a3ebd2624f92635515ab7899f, type: 3}
-  grenade: {fileID: 4140240703350599985}
   KNIFE_DURATION: 0.25
   KNIFE_COOLDOWN: 0.2
   KNIFE_KNOCKBACK: 15
   KNIFE_DAMAGE: 1
+  stabSound: {fileID: 11400000, guid: 0b578dc96ff77c141a80bb676f9ad459, type: 2}
+  knifeStabFX: {fileID: 0}
   GUN_VEL: 10
   GUN_COOLDOWN: 0.2
   GUN_KNOCKBACK: 6
@@ -69,10 +69,12 @@ MonoBehaviour:
   lastAttack: 0
   ammoClipSize: 6
   noAmmoIcon: {fileID: 7232444946018023730}
-  GRENADE_COOLDOWN: 1.5
-  stabSound: {fileID: 11400000, guid: 0b578dc96ff77c141a80bb676f9ad459, type: 2}
   gunShootSound: {fileID: 11400000, guid: 066394a0cf53aaf43a3ecff26ec8bb6a, type: 2}
+  gunShootFX: {fileID: 0}
+  ammoDisplay: {fileID: 0}
+  GRENADE_COOLDOWN: 1.5
   grenadeThrowSound: {fileID: 11400000, guid: 1c04b9b0806d885409fc6d655c501398, type: 2}
+  grenade: {fileID: 4140240703350599985}
 --- !u!50 &1935972499995274309
 Rigidbody2D:
   serializedVersion: 5
@@ -241,6 +243,7 @@ GameObject:
   - component: {fileID: 5853584034363697335}
   - component: {fileID: 1457650538093656200}
   - component: {fileID: 3524649857547940900}
+  - component: {fileID: 5750592081012087867}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -332,6 +335,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &5750592081012087867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1472067518534006380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ecf3c87255a57cd40a1fd3e3af21b6f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FixedTransformUI
 --- !u!1 &2222141181801252736
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,7 +488,19 @@ MonoBehaviour:
         m_CallState: 2
   onHitted:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11400000, guid: 8457105eef8b19043a44ccd30de6fa43, type: 2}
+        m_TargetAssemblyTypeName: CameraFXData, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Transform, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   enemyKnockback: 10
   buildingSound: {fileID: 11400000, guid: 0c859e4f6f82e8d4fb9c969cb76acac9, type: 2}
   collectScrapSound: {fileID: 11400000, guid: c9e58d2a76af3a74985955923add368b, type: 2}
@@ -564,7 +591,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9215687, g: 0.42352945, b: 0.59607846, a: 1}
+  m_Color: {r: 0.77647066, g: 0.8000001, b: 0.32941177, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
