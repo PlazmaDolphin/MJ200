@@ -1,16 +1,13 @@
-using System;
 using System.Collections.Generic;
-using NUnit.Framework.Interfaces;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.InputSystem;
 
-public class worldGrid : MonoBehaviour
+public class worldGrid : MonoBehaviourSingleton<worldGrid>
 {
-    public static bool gridMode = false;
+    public bool gridMode = false;
     private bool validPlacement = false;
-    private const float placeRadius = 4f;
-    private const float gridZ = 0f;
+    [SerializeField] private float placeRadius = 4f;
+    [SerializeField] private float gridZ = 0f;
     public GameObject gridOverlay, blockGuide;
     public Transform player;
     public LayerMask gridPlaneMask;
@@ -53,7 +50,7 @@ public class worldGrid : MonoBehaviour
         return new Vector3(
             grid.x * GridOverlay.cellSize + GridOverlay.cellSize * 0.5f,
             grid.y * GridOverlay.cellSize + GridOverlay.cellSize * 0.5f,
-            gridZ
+            Instance.gridZ
         );
     }
     Vector2Int ClampGridPosToRadius(Vector2Int desiredGrid)

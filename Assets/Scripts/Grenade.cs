@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Grenade : MonoBehaviour
 {
@@ -10,6 +11,7 @@ public class Grenade : MonoBehaviour
 
     [Header("Sound Effects")]
     [SerializeField] private SoundFXData explodeSound;
+    [SerializeField] private UnityEvent exploded;
 
     public void activate()
     {
@@ -26,6 +28,7 @@ public class Grenade : MonoBehaviour
     {
         if (explodeSound) explodeSound.Play();
 
+        exploded?.Invoke();
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

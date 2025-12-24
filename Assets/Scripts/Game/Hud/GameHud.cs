@@ -54,6 +54,7 @@ public class GameHud : MonoBehaviour
 
     private void UpdateTimeFill()
     {
-        timeFillImage.fillAmount = policeSpawner.GetDayProgress01();
+        //timeFillImage.fillAmount = policeSpawner.GetDayProgress01();
+        timeFillImage.fillAmount = 1f;
     }
 }

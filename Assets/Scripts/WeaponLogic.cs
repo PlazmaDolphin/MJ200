@@ -12,17 +12,27 @@ public class WeaponLogic : MonoBehaviour
     public Sprite[] weaponSprites;
     public GrenadeGuide grenade;
     private int weaponType = 0; // 0: knife, 1: gun, 2: grenade.
-    private const float KNIFE_DURATION = 0.25f;
-    private const float KNIFE_COOLDOWN = 0.4f, GUN_COOLDOWN = 0.25f, GRENADE_COOLDOWN = 3f;
-    private const float KNIFE_KNOCKBACK = 15f, GUN_KNOCKBACK = 5f;
-    private const int KNIFE_DAMAGE = 1, GUN_DAMAGE = 2;
-    private const float GUN_VEL = 10f;
-    private float lastAttack;
+
+    [Header("Knife")]
+    [SerializeField] private float KNIFE_DURATION = 0.25f;
+    [SerializeField] private float KNIFE_COOLDOWN = 0.2f;
+    [SerializeField] private float KNIFE_KNOCKBACK = 15f;
+    [SerializeField] private int KNIFE_DAMAGE = 1;
+
+    [Header("Gun")]
+    [SerializeField] private float GUN_VEL = 10f;
+    [SerializeField] private float GUN_COOLDOWN = 0.2f;
+    [SerializeField] private float GUN_KNOCKBACK = 5f;
+    [SerializeField] private int GUN_DAMAGE = 2;
+    [SerializeField] private float lastAttack;
+    [SerializeField] private int ammoClipSize = 6;
+    [SerializeField] private GameObject noAmmoIcon;
+    private int currentAmmo;
     private Coroutine reloadRoutine;
     private bool isReloading;
 
-    private int ammoClipSize = 6;
-    private int currentAmmo;
+    [Header("Grenade")]
+    [SerializeField] private float GRENADE_COOLDOWN = 2f;
 
     [Header("Sound Effects")]
     [SerializeField] private SoundFXData stabSound;
@@ -35,6 +45,7 @@ public class WeaponLogic : MonoBehaviour
         SwitchWeapon(weaponType);
         currentAmmo = ammoClipSize;
         ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
+        noAmmoIcon.gameObject.SetActive(currentAmmo > 0);
     }
 
     // Update is called once per frame
@@ -74,6 +85,7 @@ public class WeaponLogic : MonoBehaviour
                 bullet.GetComponent<Bullet>().initBullet(GetNormalizedMouseDirection() * GUN_VEL, GUN_DAMAGE, GUN_KNOCKBACK);
                 currentAmmo--;
                 ammoDisplay.text = "Ammo: " + currentAmmo + " / " + ammoClipSize;
+                noAmmoIcon.gameObject.SetActive(currentAmmo > 0);
             }
         }
         if (weaponType == 2)

@@ -27,6 +27,7 @@ public class PlayerController : MonoBehaviour
     public float invinTime = 1f;
     private float invincibilityTimer = 0f;
     [SerializeField] private UnityEvent onLose;
+    [SerializeField] private UnityEvent onHitted;
 
     [Header("Enemy")]
     [SerializeField] private float enemyKnockback = 10f;
@@ -54,19 +55,20 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         if (!GameStateManager.CanPlay()) return;
+
         // Replace this with the actual key we want for building
         if (Keyboard.current.eKey.wasPressedThisFrame)
         {
             SetIsBuilding(!isBuilding);
         }
 
-        if (Input.GetMouseButtonDown(0) && !worldGrid.gridMode)
+        if (Input.GetMouseButtonDown(0) && !worldGrid.Instance.gridMode)
         {
             weapon.UseWeapon();
         }
         //scrapText.text = "Scrap: " + InventoryManager.Instance.ScrapCount;
         // scroll wheel to change weapon if not in grid mode
-        if (Input.GetAxis("Mouse ScrollWheel") != 0 && !worldGrid.gridMode)
+        if (Input.GetAxis("Mouse ScrollWheel") != 0 && !worldGrid.Instance.gridMode)
         {
             weapon.SwitchWeapon(Input.GetAxis("Mouse ScrollWheel") > 0 ? 1 : -1);
         }
@@ -159,6 +161,7 @@ public class PlayerController : MonoBehaviour
             SetCurrentHealth(currentHealth - 1);
             OnHealthChanged?.Invoke(currentHealth);
             canBeHit = false;
+            onHitted?.Invoke();
             invincibilityTimer = invinTime;
 
             if (currentHealth <= 0)

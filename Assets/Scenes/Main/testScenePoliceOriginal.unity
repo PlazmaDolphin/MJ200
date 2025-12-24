@@ -389,6 +389,10 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: 1443845487
       objectReference: {fileID: 0}
+    - target: {fileID: 5853584034363697335, guid: 18f0d40c065060a4fa4f6d6edfb05769, type: 3}
+      propertyPath: m_AdditionalShaderChannelsFlag
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 8113634610881975356, guid: 18f0d40c065060a4fa4f6d6edfb05769, type: 3}
       propertyPath: ammoDisplay
       value: 
@@ -679,7 +683,7 @@ MonoBehaviour:
   blockSprites:
   - {fileID: 8205695783090892029, guid: 4fef701abf30f414ea3c41b3e670fc10, type: 3}
   - {fileID: -5669314472355185964, guid: 5a40320e7c6214d48bbf41ae2eea661c, type: 3}
-  - {fileID: 2323917800338813707, guid: ea425fa287eb1f94792c0337ecdfe021, type: 3}
+  - {fileID: 7208073312599298828, guid: b9389e1a0055c4f458d18f905b2210fb, type: 3}
   - {fileID: 6173317149602591285, guid: ea3596319ac6fb54e878f45bd29bcb2f, type: 3}
 --- !u!4 &982541670
 Transform:
@@ -82351,6 +82355,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI
       objectReference: {fileID: 0}
+    - target: {fileID: 1059928129127061123, guid: 258cb48b80422c44eaa2d63b1e716403, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1933159962283636007, guid: 258cb48b80422c44eaa2d63b1e716403, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -82541,6 +82549,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6691137265971855881, guid: 258cb48b80422c44eaa2d63b1e716403, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6786731221568161315, guid: 258cb48b80422c44eaa2d63b1e716403, type: 3}
+      propertyPath: m_Alpha
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6897756097588578211, guid: 258cb48b80422c44eaa2d63b1e716403, type: 3}
